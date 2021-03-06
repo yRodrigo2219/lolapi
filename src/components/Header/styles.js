@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Colors } from '../../assets/css/StylePattern';
 
 export const Container = styled.div`
+  position:relative;
   background-color: ${Colors.secondary};
   min-height: 52px;
   display: flex;
