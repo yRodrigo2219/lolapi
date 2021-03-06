@@ -4,16 +4,18 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+
 import Header from './components/Header';
+import Home from './pages/Home';
 
 export default function Routes() {
   return (
     <BrowserRouter>
+      <Header />
+
       <Switch>
-        <Header />
-
         <Route path='/'>
-
+          <Home />
         </Route>
       </Switch>
     </BrowserRouter>
