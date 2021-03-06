@@ -34,4 +34,5 @@ export const LiveName = styled.span`
   color: ${Colors.secondaryDark};
   line-height: 48px;
   font-size: 48px;
+  font-weight: 700;
 `;

@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  height: calc(100% - 52px);
-  padding: 20px;
+  display: flex;
+  min-height: calc(100vh - 52px);
+`;
+
+export const FreeSpace = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
 `;

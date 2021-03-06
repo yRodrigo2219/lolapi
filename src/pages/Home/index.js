@@ -1,12 +1,16 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, FreeSpace } from './styles';
 import LiveMatches from './LiveMatches';
+import NextMatches from './NextMatches';
 
 export default function Home() {
   return (
     <Container>
-      <LiveMatches />
+      <FreeSpace>
+        <LiveMatches />
+      </FreeSpace>
+      <NextMatches />
     </Container>
   );
 }

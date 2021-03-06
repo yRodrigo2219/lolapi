@@ -10,4 +10,5 @@ export const LogoLink = styled(Link)`
   text-decoration: none;
   line-height: 32px;
   font-size: 32px;
+  font-weight: 700;
 `;
