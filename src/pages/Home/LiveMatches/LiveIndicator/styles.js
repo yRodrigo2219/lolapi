@@ -5,6 +5,11 @@ import { Colors } from '../../../../assets/css/StylePattern';
 export const Container = styled.div`
   display: flex;
   user-select: none;
+
+  >span {
+    display: flex;
+    margin: 0px auto;
+  }
 `;
 
 const LiveBlinkColor = keyframes`

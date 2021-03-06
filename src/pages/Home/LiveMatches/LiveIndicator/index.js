@@ -9,8 +9,10 @@ import {
 export default function LiveIndicator() {
   return (
     <Container>
-      <LiveSymbol>⬤</LiveSymbol>
-      <LiveName>LIVE</LiveName>
+      <span>
+        <LiveSymbol>⬤</LiveSymbol>
+        <LiveName>LIVE</LiveName>
+      </span>
     </Container>
   );
 }

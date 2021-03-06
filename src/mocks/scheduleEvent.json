@@ -1,0 +1,46 @@
+{
+  "startTime": "2021-02-25T23:00:00Z",
+  "state": "unstarted",
+  "type": "match",
+  "blockName": "Semana 6",
+  "league": {
+    "name": "CBLOL",
+    "slug": "cblol-brazil"
+  },
+  "match": {
+    "id": "105539760574818413",
+    "flags": [],
+    "teams": [
+      {
+        "name": "RENSGA",
+        "code": "RNS",
+        "image": "http://static.lolesports.com/teams/LogoRensgaEsports.png",
+        "result": {
+          "outcome": null,
+          "gameWins": 0
+        },
+        "record": {
+          "wins": 2,
+          "losses": 9
+        }
+      },
+      {
+        "name": "VORAX",
+        "code": "VRX",
+        "image": "http://static.lolesports.com/teams/Vorax-Logotipo-vertical-letreiro-branco.png",
+        "result": {
+          "outcome": null,
+          "gameWins": 0
+        },
+        "record": {
+          "wins": 6,
+          "losses": 4
+        }
+      }
+    ],
+    "strategy": {
+      "type": "bestOf",
+      "count": 1
+    }
+  }
+}
