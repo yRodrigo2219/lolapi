@@ -8,4 +8,5 @@ export const Nav = styled(Link)`
   font-size: 24px;
   line-height: 32px;
   text-decoration: none;
+  padding: 0px 4px;
 `;

@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     background-color: ${Colors.primary};
   }
+
+  #root {
+    height: 100vh;
+  }
 `;
 
 export default GlobalStyle;
