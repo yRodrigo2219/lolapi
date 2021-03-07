@@ -13,6 +13,15 @@ export const Container = styled(Link)`
   background-color: ${Colors.primaryDark};
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-decoration: none;
+  margin-bottom: 24px;
+
+  :hover {
+    background-color: ${Colors.primarySelect};
+  }
+
+  :active {
+    transform: translateY(4px);
+  }
 `;
 
 export const Center = styled.div`
@@ -23,8 +32,9 @@ export const Center = styled.div`
 `;
 
 export const LeagueImage = styled.img`
-  //filter: invert(100%) grayscale(100%);
-  height: 100%;
+  margin: 8px 0px 0px 8px;
+  height: 56px;
+  width: 56px;
 `;
 
 export const ScoreBoard = styled.span`
@@ -45,6 +55,7 @@ export const TeamInfo = styled.span`
 
   img {
     height: 64px;
+    width: 64px;
   }
 `;
 

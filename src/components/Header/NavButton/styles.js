@@ -9,4 +9,12 @@ export const Nav = styled(Link)`
   line-height: 32px;
   text-decoration: none;
   padding: 0px 4px;
+
+  :hover {
+    color: ${Colors.primarySelect};
+  }
+
+  :active {
+    transform: translateY(2px);
+  }
 `;

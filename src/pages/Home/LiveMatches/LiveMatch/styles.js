@@ -12,10 +12,19 @@ export const Container = styled(Link)`
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-decoration: none;
+
+  :hover {
+    background-color: ${Colors.primarySelect};
+  }
+
+  :active {
+    transform: translateY(8px);
+  }
 `;
 
 export const LeagueImg = styled.img`
-  height: 100%;
+  margin: 8px 0px 0px 8px;
+  height: 80px;
 `;
 
 export const Center = styled.div`

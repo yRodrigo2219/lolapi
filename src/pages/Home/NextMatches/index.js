@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import {
   Container,
@@ -6,15 +7,20 @@ import {
   MatchList
 } from './style';
 import NextMatch from './NextMatch';
-
-const EventData = require('../../../mocks/scheduleEvent.json');
+import { nextMatches } from '../../../store/ducks/schedule/selects';
 
 export default function NextMatches() {
+  const next = useSelector(nextMatches);
+
   return (
     <Container>
       <Title>Soon™</Title>
       <MatchList>
-        <NextMatch data={EventData} />
+        {
+          next.map(
+            event => (<NextMatch data={event} key={event.match.id} />)
+          )
+        }
       </MatchList>
     </Container>
   );

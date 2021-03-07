@@ -11,4 +11,12 @@ export const LogoLink = styled(Link)`
   line-height: 32px;
   font-size: 32px;
   font-weight: 700;
+
+  :hover {
+    color: ${Colors.primarySelect};
+  }
+
+  :active {
+    transform: translateY(2px);
+  }
 `;

@@ -3,6 +3,7 @@ export const Colors = {
   secondary: '#FFFFFF',
   primaryDark: '#3B174D',
   secondaryDark: '#F1F0F2',
+  primarySelect: '#A60891',
   blueSide: '#0851A6',
   redSide: '#A60808',
 };

@@ -23,13 +23,7 @@ export async function getLeagues() {
   }
 }
 
-export async function getSchedule() {
-  const leagues = await getLeagues();
-  let scheduleFilter = '';
-  leagues.forEach(league => {
-    scheduleFilter += `${league.id},`;
-  });
-
+export async function getSchedule(scheduleFilter) {
   try {
     const res = await axios.get(`${API_URL_PERSISTED}/getSchedule`, {
       params: {

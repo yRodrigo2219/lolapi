@@ -19,5 +19,5 @@ export const Title = styled.h1`
 `;
 
 export const MatchList = styled.div`
-  padding: 0px 44px;
+  padding: 0px 44px 40px;
 `;
