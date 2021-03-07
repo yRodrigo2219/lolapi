@@ -1,33 +1,34 @@
-import { LEAGUE } from './types';
+import { SCHEDULE } from './types';
 
 const INITIAL_STATE = {
   data: [],
-  filter: '',
+  newer: '',
   loading: false,
   error: false
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case LEAGUE.REQUEST:
+    case SCHEDULE.REQUEST:
       return {
         ...state,
         loading: true
       }
-    case LEAGUE.SUCCESS:
-      let filter = '';
-      action.payload.forEach(league => {
-        filter += `${league.id},`;
+    case SCHEDULE.SUCCESS:
+      let newer = action.payload.pages.newer;
+      let data = action.payload.events.filter(event => {
+        return (event.type === 'match' && event.state !== 'completed');
       });
+      data = data.slice(0, 20);
 
       return {
         ...state,
-        data: action.payload,
-        filter,
+        data,
+        newer,
         loading: false,
         error: false
       };
-    case LEAGUE.FAILURE:
+    case SCHEDULE.FAILURE:
       return {
         ...state,
         loading: false,

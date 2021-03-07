@@ -2,7 +2,7 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { getLeagues } from '../../../services/api';
 import { loadSuccess, loadFailure } from './actions';
-import { types } from './types';
+import { LEAGUE } from './types';
 
 function* load() {
   try {
@@ -15,5 +15,5 @@ function* load() {
 }
 
 export default function* leagues() {
-  yield takeLatest(types.LEAGUE_REQUEST, load);
+  yield takeLatest(LEAGUE.REQUEST, load);
 }

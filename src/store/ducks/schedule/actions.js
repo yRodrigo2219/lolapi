@@ -1,20 +1,20 @@
-import { LEAGUE } from './types';
+import { SCHEDULE } from './types';
 
 export function loadRequest() {
   return {
-    type: LEAGUE.REQUEST,
+    type: SCHEDULE.REQUEST,
   }
 }
 
 export function loadSuccess(response) {
   return {
-    type: LEAGUE.SUCCESS,
+    type: SCHEDULE.SUCCESS,
     payload: response
   }
 }
 
 export function loadFailure() {
   return {
-    type: LEAGUE.FAILURE,
+    type: SCHEDULE.FAILURE,
   }
 }
