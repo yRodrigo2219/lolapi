@@ -1,0 +1,72 @@
+{
+  "data": {
+    "event": {
+      "id": "105539760574883989",
+      "type": "match",
+      "tournament": {
+        "id": "105539760572983266"
+      },
+      "league": {
+        "id": "98767991332355509",
+        "slug": "cblol-brazil",
+        "image": "http://static.lolesports.com/leagues/cblol-logo-symbol-offwhite.png",
+        "name": "CBLOL"
+      },
+      "match": {
+        "strategy": {
+          "count": 1
+        },
+        "teams": [
+          {
+            "id": "99566408222831088",
+            "name": "VORAX",
+            "code": "VRX",
+            "image": "http://static.lolesports.com/teams/Vorax-Logotipo-vertical-letreiro-branco.png",
+            "result": {
+              "gameWins": 0
+            }
+          },
+          {
+            "id": "99566408221114231",
+            "name": "KaBuM! Esports",
+            "code": "KBM",
+            "image": "http://static.lolesports.com/teams/KBM-FullonDark-5.png",
+            "result": {
+              "gameWins": 1
+            }
+          }
+        ],
+        "games": [
+          {
+            "number": 1,
+            "id": "105539760574883990",
+            "state": "completed",
+            "teams": [
+              {
+                "id": "99566408222831088",
+                "side": "blue"
+              },
+              {
+                "id": "99566408221114231",
+                "side": "red"
+              }
+            ],
+            "vods": [
+              {
+                "id": "105844647644888093",
+                "parameter": "nOrte78B3zM",
+                "locale": "pt-BR",
+                "provider": "youtube",
+                "offset": 0,
+                "firstFrameTime": null,
+                "startMillis": null,
+                "endMillis": null
+              }
+            ]
+          }
+        ]
+      },
+      "streams": []
+    }
+  }
+}

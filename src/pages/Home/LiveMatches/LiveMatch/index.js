@@ -13,7 +13,7 @@ import { leagueImage } from '../../../../store/ducks/leagues/selects';
 
 export default function LiveMatch({ data }) {
   const lgImage = useSelector(leagueImage(data.league.slug));
-  const lgName = data.league.name;
+  //const lgName = data.league.name;
   const [fstTeam, sndTeam] = data.match.teams;
   const id = data.match.id;
 

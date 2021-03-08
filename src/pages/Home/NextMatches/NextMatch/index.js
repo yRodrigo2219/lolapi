@@ -14,9 +14,8 @@ import {
 import { leagueImage } from '../../../../store/ducks/leagues/selects';
 
 export default function NextMatch({ data }) {
-  // leagueName used as tooltip
   const lgImage = useSelector(leagueImage(data.league.slug));
-  const lgName = data.league.name;
+  //const lgName = data.league.name;
   const [fstTeam, sndTeam] = data.match.teams;
   const id = data.match.id;
   const date = format(new Date(data.startTime), 'MM/dd HH:mma');

@@ -39,7 +39,7 @@ export const LeagueImage = styled.img`
 
 export const ScoreBoard = styled.span`
   display: flex;
-  color: ${Colors.secondaryDark};
+  color: ${Colors.secondary};
   align-items: center;
   line-height: 32px;
   font-size: 24px;
@@ -62,7 +62,7 @@ export const TeamInfo = styled.span`
 export const MatchTime = styled.span`
   line-height: 16px;
   font-size: 16px;
-  color: ${Colors.primaryDark};
+  color: ${Colors.primary};
   position: absolute;
   bottom: -20px;
   right: 4px;

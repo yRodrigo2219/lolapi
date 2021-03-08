@@ -7,7 +7,7 @@ export const Container = styled.div`
   max-width: 670px;
   width: 100%;
   flex-shrink: 2;
-  background-color: ${Colors.secondaryDark};
+  background-color: ${Colors.secondary};
 `;
 
 export const Title = styled.h1`

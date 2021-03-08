@@ -31,7 +31,7 @@ export const LiveSymbol = styled.span`
 `;
 
 export const LiveName = styled.span`
-  color: ${Colors.secondaryDark};
+  color: ${Colors.secondary};
   line-height: 48px;
   font-size: 48px;
   font-weight: 700;
