@@ -9,8 +9,7 @@ export const Container = styled.div`
   background-color: ${Colors.secondaryDark};
 `;
 
-export const TeamContainer = styled.div``;
-
 export const Menu = styled.div`
-  width: 240px;
+  min-width: 240px;
+  max-width: 240px;
 `;

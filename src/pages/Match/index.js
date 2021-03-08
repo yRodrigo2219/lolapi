@@ -3,10 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import {
   Container,
-  TeamContainer,
   Menu,
 } from './styles';
-import TeamInfo from './TeamInfo';
+import Team from './Team';
 
 import EventDetails from '../../mocks/getEventDetails.json';
 
@@ -16,19 +15,11 @@ export default function Match() {
 
   return (
     <Container>
-      <TeamContainer>
-        <TeamInfo code={fst.code} name={fst.name}
-          result={fst.result.gameWins}
-          src={fst.image} />
-      </TeamContainer>
+      <Team />
       <Menu>
 
       </Menu>
-      <TeamContainer>
-        <TeamInfo code={snd.code} name={snd.name}
-          result={snd.result.gameWins} flipped
-          src={snd.image} />
-      </TeamContainer>
+      <Team />
     </Container>
   );
 }
