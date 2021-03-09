@@ -5,3 +5,5 @@ export const leagueImage = slug => (
     )).image
   )
 );
+
+export const leagueFilter = state => state.leagues.filter;

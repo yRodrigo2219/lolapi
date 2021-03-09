@@ -1,15 +1,15 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 
 import { getSchedule } from '../../../services/api';
-import { loadSuccess, loadFailure } from './actions';
+import { loadSuccess, loadFailure, loadRequest } from './actions';
+import { leagueFilter } from '../leagues/selects';
+import { SCHEDULE } from './types';
 import { LEAGUE } from '../leagues/types';
 
-const leagueFilter = state => state.leagues.filter;
-
-function* load() {
+function* load(action) {
   try {
-    const params = yield select(leagueFilter);
-    const response = yield call(getSchedule, params);
+    const filter = action.payload;
+    const response = yield call(getSchedule, filter);
 
     yield put(loadSuccess(response));
   } catch (err) {
@@ -17,6 +17,13 @@ function* load() {
   }
 }
 
+function* updateSchedule() {
+  const filter = yield select(leagueFilter);
+
+  yield put(loadRequest(filter));
+}
+
 export default function* schedule() {
-  yield takeLatest(LEAGUE.SUCCESS, load);
+  yield takeLatest(LEAGUE.SUCCESS, updateSchedule);
+  yield takeLatest(SCHEDULE.REQUEST, load);
 }

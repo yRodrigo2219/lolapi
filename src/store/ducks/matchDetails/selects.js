@@ -13,3 +13,7 @@ export const selectGames = id => (
       []
   )
 )
+
+export const selectNextGameId = state => (
+  state.matchDetails.nextGameId
+)

@@ -2,7 +2,7 @@ import { MATCH } from './types';
 
 const INITIAL_STATE = {
   id: '',
-  activeGame: '',
+  nextGameId: '',
   teams: [],
   games: [],
   loading: false,
@@ -25,10 +25,19 @@ export default function reducer(state = INITIAL_STATE, action) {
         game.state !== 'unneeded'
       ));
 
+      const nextGame = playableGames.find(game => (
+        game.state !== 'completed'
+      ));
+
+      const nextGameId = (
+        nextGame ? nextGame.id : playableGames[playableGames.length - 1].id
+      )
+
       return {
         ...state,
         id,
         teams,
+        nextGameId,
         games: playableGames,
         loading: false,
         error: false

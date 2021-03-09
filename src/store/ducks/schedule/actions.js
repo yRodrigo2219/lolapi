@@ -1,8 +1,9 @@
 import { SCHEDULE } from './types';
 
-export function loadRequest() {
+export function loadRequest(filter) {
   return {
     type: SCHEDULE.REQUEST,
+    payload: filter
   }
 }
 

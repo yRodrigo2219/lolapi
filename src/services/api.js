@@ -81,9 +81,9 @@ export async function getInitialGameDate(gameId) {
     const res = await axios.get(`${API_URL_LIVE}/window/${gameId}`);
 
     if (res.data.frames)
-      return res.data.frames[0].rfc460Timestamp;
+      return new Date(res.data.frames[0].rfc460Timestamp).getTime();
     else
-      return '';
+      return -1;
   } catch (err) {
     console.log(err);
     // return await wait(5000).then(()=> getInitialGameStats(gameId));
