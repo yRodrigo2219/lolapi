@@ -11,11 +11,17 @@ export const Container = styled.span`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   align-items: center;
   margin: 0px 18px 18px 0px;
+  flex-direction:${props => (
+    props.flipped ? 'row-reverse' : 'row'
+  )};
 
   svg {
     margin: 0px 10px;
     fill: ${props => (
     props.side === 'blue' ? Colors.blueSide : Colors.redSide
+  )};
+   transform: ${props => (
+    props.flipped ? 'scaleX(-1)' : 'scaleX(1)'
   )};
   }
 
@@ -24,10 +30,16 @@ export const Container = styled.span`
     color: ${Colors.primaryDark};
     line-height: 32px;
     font-size: 32px;
-    margin-right: 10px;
+    margin-right: ${props => (
+    props.flipped ? '0px' : '10px'
+  )};
+  margin-left: ${props => (
+    props.flipped ? '10px' : '0px'
+  )};
 
     svg {
       margin: 0px 2px;
+      transform: scaleX(1);
     }
   }
 `;

@@ -13,7 +13,7 @@ export default function Team({ teamData, flipped }) {
       <TeamInfo code={teamData.code} name={teamData.name}
         flipped={!!flipped} src={teamData.image}
         result={teamData.result.gameWins} />
-      <TeamGameInfo />
+      <TeamGameInfo flipped={!!flipped} />
 
     </Container>
   );
