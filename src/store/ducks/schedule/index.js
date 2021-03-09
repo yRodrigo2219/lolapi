@@ -24,7 +24,10 @@ export default function reducer(state = INITIAL_STATE, action) {
         return (event.state === 'inProgress');
       })
       let next = data.filter(event => {
-        return (event.state !== 'inProgress');
+        const isSuperLate =
+          (Date.now() - new Date(event.startTime).getTime()) >
+          (3600 * 1000 * 5); //5 Hours
+        return (event.state !== 'inProgress' && !isSuperLate);
       });
 
       next = next.slice(0, 20);
