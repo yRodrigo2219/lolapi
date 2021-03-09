@@ -7,17 +7,13 @@ import {
 } from './styles';
 import Team from './Team';
 import { loadRequest } from '../../store/ducks/matchDetails/actions';
-import {
-  selectTeams,
-  selectGames
-} from '../../store/ducks/matchDetails/selects';
+import { selectTeams } from '../../store/ducks/matchDetails/selects';
 import Menu from './Menu';
 
 export default function Match() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const [fst, snd] = useSelector(selectTeams(id));
-  const games = useSelector(selectGames(id));
 
   useEffect(() => {
     dispatch(loadRequest(id));
@@ -26,7 +22,7 @@ export default function Match() {
   return (
     <Container>
       <Team teamData={fst} />
-      <Menu />
+      <Menu id={id} />
       <Team teamData={snd} flipped />
     </Container>
   );
