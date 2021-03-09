@@ -1,11 +1,13 @@
 import { all } from 'redux-saga/effects';
 
-import leagues from './leagues/saga';
-import schedule from './schedule/saga';
+import leagues from './leagues/sagas';
+import schedule from './schedule/sagas';
+import matchDetails from './matchDetails/sagas';
 
 export default function* rootSaga() {
   yield all([
     leagues(),
     schedule(),
+    matchDetails(),
   ]);
 }

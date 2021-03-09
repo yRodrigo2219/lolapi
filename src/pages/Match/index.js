@@ -1,25 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   Container,
-  Menu,
 } from './styles';
 import Team from './Team';
-
-import EventDetails from '../../mocks/getEventDetails.json';
+import { loadRequest } from '../../store/ducks/matchDetails/actions';
+import {
+  selectTeams,
+  selectGames
+} from '../../store/ducks/matchDetails/selects';
+import Menu from './Menu';
 
 export default function Match() {
   const { id } = useParams();
-  const [fst, snd] = EventDetails.data.event.match.teams;
+  const dispatch = useDispatch();
+  const [fst, snd] = useSelector(selectTeams(id));
+  const games = useSelector(selectGames(id));
+
+  useEffect(() => {
+    dispatch(loadRequest(id));
+  }, [dispatch, id]);
 
   return (
     <Container>
-      <Team />
-      <Menu>
-
-      </Menu>
-      <Team />
+      <Team teamData={fst} />
+      <Menu />
+      <Team teamData={snd} flipped />
     </Container>
   );
 }

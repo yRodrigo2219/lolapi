@@ -1,8 +1,8 @@
 import React from 'react';
 
 import { Container } from './styles';
-import StatSVG, { STAT_TYPE } from '../../../../assets/svgs/stats';
-import DrakeSVG from '../../../../assets/svgs/stats/drakes';
+import StatSVG, { STAT_TYPE } from '../../../../../assets/svgs/stats';
+import DrakeSVG from '../../../../../assets/svgs/stats/drakes';
 
 export default function Stat({ content, stat }) {
   return (

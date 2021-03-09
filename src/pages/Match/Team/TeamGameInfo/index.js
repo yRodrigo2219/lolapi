@@ -7,7 +7,7 @@ import {
 } from './styles';
 import Stat, { STAT } from './Stat';
 
-import LiveGame from '../../../mocks/liveFeedWindow.json'
+import LiveGame from '../../../../mocks/liveFeedWindow.json'
 
 export default function TeamGameInfo() {
   const blueStats = LiveGame.frames[LiveGame.frames.length - 1].redTeam;

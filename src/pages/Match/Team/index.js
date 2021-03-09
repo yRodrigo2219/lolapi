@@ -1,11 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { Container } from './styles'
+import { Container } from './styles';
+import TeamInfo from './TeamInfo';
+import TeamGameInfo from './TeamGameInfo';
 
-export default function Team() {
+export default function Team({ teamData, flipped }) {
+  if (!teamData)
+    return null;
+
   return (
     <Container>
+      <TeamInfo code={teamData.code} name={teamData.name}
+        flipped={!!flipped} src={teamData.image}
+        result={teamData.result.gameWins} />
+      <TeamGameInfo />
 
     </Container>
-  )
+  );
 }

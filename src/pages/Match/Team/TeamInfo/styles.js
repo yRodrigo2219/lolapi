@@ -1,11 +1,14 @@
 import styled from 'styled-components';
 
-import { Colors } from '../../../assets/css/StylePattern';
+import { Colors } from '../../../../assets/css/StylePattern';
 
 export const Container = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  justify-content: ${props => (
+    props.flipped ? 'flex-end' : 'flex-start'
+  )};
 
   img {
     order: ${props => (

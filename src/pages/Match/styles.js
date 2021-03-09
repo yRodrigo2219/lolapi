@@ -8,8 +8,3 @@ export const Container = styled.div`
   min-height: calc(100vh - 52px);
   background-color: ${Colors.secondaryDark};
 `;
-
-export const Menu = styled.div`
-  min-width: 240px;
-  max-width: 240px;
-`;

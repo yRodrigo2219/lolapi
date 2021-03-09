@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Colors } from '../../../../assets/css/StylePattern';
+import { Colors } from '../../../../../assets/css/StylePattern';
 
 export const Container = styled.span`
   display: flex;
