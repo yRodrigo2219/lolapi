@@ -8,10 +8,11 @@ import {
   GameButton
 } from './styles';
 import { selectGames } from '../../../store/ducks/matchDetails/selects';
+import { selectActiveGame } from '../../../store/ducks/gameInfo/selects';
 
 export default function Menu({ id }) {
   const games = useSelector(selectGames(id));
-  const activeGame = '';
+  const activeGame = useSelector(selectActiveGame);
 
   if (games.length === 0)
     return null;

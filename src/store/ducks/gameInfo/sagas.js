@@ -9,6 +9,9 @@ import { MATCH } from '../matchDetails/types';
 function* load(action) {
   try {
     const payload = action.payload;
+    if (payload.gameId === '')
+      return;
+
     const response = yield call(getGameStats, payload.gameId, payload.date);
 
     yield put(loadSuccess(response));
@@ -17,13 +20,13 @@ function* load(action) {
   }
 }
 
-function* updateGame() {
+function* initializeGame() {
   const nextGameId = yield select(selectNextGameId);
 
   yield put(loadRequest(nextGameId));
 }
 
 export default function* match() {
-  yield takeLatest(MATCH.SUCCESS, updateGame);
+  yield takeLatest(MATCH.SUCCESS, initializeGame);
   yield takeLatest(GAME.REQUEST, load);
 }

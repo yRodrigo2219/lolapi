@@ -1,0 +1,49 @@
+import { TIME } from './types';
+
+const INITIAL_STATE = {
+  unix: 0,
+  now: 0,
+  initialUnix: 0,
+  delay: 20000,
+  loading: false,
+  error: false
+};
+
+export default function reducer(state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case TIME.UPDATE:
+      const now =
+        state.unix + (Date.now() - state.initialUnix) - state.delay;
+
+      return {
+        ...state,
+        now,
+      }
+    case TIME.REQUEST:
+      const initialUnix = Date.now();
+
+      return {
+        ...state,
+        initialUnix,
+        loading: true
+      }
+    case TIME.SUCCESS:
+      const ms = new Date(action.payload.datetime).getMilliseconds();
+      const unix = action.payload.unixtime * 1000 + ms;
+
+      return {
+        ...state,
+        unix,
+        loading: false,
+        error: false
+      };
+    case TIME.FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: true
+      }
+    default:
+      return state;
+  }
+}

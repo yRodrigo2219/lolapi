@@ -8,11 +8,13 @@ export default function Team({ teamData, flipped }) {
   if (!teamData)
     return null;
 
+  const result = (teamData.result ? teamData.result.gameWins : 0);
+
   return (
     <Container>
       <TeamInfo code={teamData.code} name={teamData.name}
         flipped={!!flipped} src={teamData.image}
-        result={teamData.result.gameWins} />
+        result={result} />
       <TeamGameInfo flipped={!!flipped} />
 
     </Container>
