@@ -1,8 +1,8 @@
 import { call, put, takeLatest, select } from 'redux-saga/effects';
 
 import { getTime } from '../../../services/clock';
-import { loadFailure, loadSuccess, updateTime } from './actions';
-import { loadRequest } from '../gameInfo/actions';
+import { loadFailure, loadSuccess, updateTime, loadRequest } from './actions';
+import { updateGameRequest } from '../gameInfo/actions';
 import { selectActiveGame } from '../gameInfo/selects';
 import { selectNow } from './selects';
 import { TIME } from './types';
@@ -16,8 +16,15 @@ function* load() {
     yield put(loadSuccess(response));
     yield put(updateTime());
   } catch (err) {
+    console.warn('loadClock error');
     yield put(loadFailure());
   }
+}
+
+function* onError() {
+  yield call(promiseDelay, 1000);
+
+  yield put(loadRequest());
 }
 
 function* update() {
@@ -30,7 +37,8 @@ function* update() {
   const delay = 10000 - (s + ms);
   const isoDate = new Date(unix - s - ms).toISOString();
 
-  yield put(loadRequest(activeGame, isoDate));
+  if (activeGame !== '')
+    yield put(updateGameRequest(activeGame, isoDate));
 
   yield call(promiseDelay, delay);
 
@@ -40,4 +48,5 @@ function* update() {
 export default function* timeTracker() {
   yield takeLatest(TIME.REQUEST, load);
   yield takeLatest(TIME.UPDATE, update);
+  yield takeLatest(TIME.FAILURE, onError);
 }

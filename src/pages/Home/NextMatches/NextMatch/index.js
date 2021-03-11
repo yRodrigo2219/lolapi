@@ -22,17 +22,17 @@ export default function NextMatch({ data }) {
 
   return (
     <Container to={`/match/${id}`}>
-      <LeagueImage src={lgImage} />
+      <LeagueImage src={`https://am-a.akamaihd.net/image?resize=56:&f=${lgImage}`} />
 
       <Center>
         <ScoreBoard>
           <TeamInfo>
             <span>{fstTeam.code}</span>
-            <img src={fstTeam.image} alt="" />
+            <img src={`https://am-a.akamaihd.net/image?resize=64:&f=${fstTeam.image}`} alt="" />
           </TeamInfo>
           <Score>:</Score>
           <TeamInfo>
-            <img src={sndTeam.image} alt="" />
+            <img src={`https://am-a.akamaihd.net/image?resize=64:&f=${sndTeam.image}`} alt="" />
             <span>{sndTeam.code}</span>
           </TeamInfo>
         </ScoreBoard>

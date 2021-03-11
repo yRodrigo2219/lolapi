@@ -10,8 +10,8 @@ import {
 import { selectGames } from '../../../store/ducks/matchDetails/selects';
 import { selectActiveGame } from '../../../store/ducks/gameInfo/selects';
 
-export default function Menu({ id }) {
-  const games = useSelector(selectGames(id));
+export default function Menu() {
+  const games = useSelector(selectGames);
   const activeGame = useSelector(selectActiveGame);
 
   if (games.length === 0)

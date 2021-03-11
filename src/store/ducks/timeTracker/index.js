@@ -20,20 +20,19 @@ export default function reducer(state = INITIAL_STATE, action) {
         now,
       }
     case TIME.REQUEST:
-      const initialUnix = Date.now();
-
       return {
         ...state,
-        initialUnix,
         loading: true
       }
     case TIME.SUCCESS:
+      const initialUnix = Date.now();
       const ms = new Date(action.payload.datetime).getMilliseconds();
       const unix = action.payload.unixtime * 1000 + ms;
 
       return {
         ...state,
         unix,
+        initialUnix,
         loading: false,
         error: false
       };

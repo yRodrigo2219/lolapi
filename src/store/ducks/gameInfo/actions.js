@@ -1,24 +1,52 @@
 import { GAME } from './types';
 
-export function loadRequest(gameId, date) {
+export function initGameRequest(gameId) {
   return {
-    type: GAME.REQUEST,
+    type: GAME.INIT_REQUEST,
+    payload: gameId,
+  }
+}
+
+export function initGameSuccess(data) {
+  return {
+    type: GAME.INIT_SUCCESS,
+    payload: data,
+  }
+}
+
+export function initGameFailure() {
+  return {
+    type: GAME.INIT_FAILURE,
+  }
+}
+
+
+export function updateGameRequest(gameId, isoDate) {
+  return {
+    type: GAME.UPDATE_REQUEST,
     payload: {
       gameId,
-      date,
+      isoDate
     }
   }
 }
 
-export function loadSuccess(response) {
+export function updateGameSuccess(data) {
   return {
-    type: GAME.SUCCESS,
-    payload: response
+    type: GAME.UPDATE_SUCCESS,
+    payload: data,
   }
 }
 
-export function loadFailure() {
+export function updateGameFailure() {
   return {
-    type: GAME.FAILURE,
+    type: GAME.UPDATE_FAILURE,
+  }
+}
+
+export function changeGame(gameId) {
+  return {
+    type: GAME.CHANGE_GAME,
+    payload: gameId,
   }
 }

@@ -76,17 +76,13 @@ export async function getGameStats(gameId, isoDate) {
   }
 }
 
-export async function getInitialGameDate(gameId) {
+export async function getInitialGameStats(gameId) {
   try {
     const res = await axios.get(`${API_URL_LIVE}/window/${gameId}`);
 
-    if (res.data.frames)
-      return new Date(res.data.frames[0].rfc460Timestamp).getTime();
-    else
-      return -1;
+    return res.data;
   } catch (err) {
     console.log(err);
-    // return await wait(5000).then(()=> getInitialGameStats(gameId));
     return { error: true };
   }
 }

@@ -7,23 +7,26 @@ import {
 } from './styles';
 import Team from './Team';
 import { loadRequest } from '../../store/ducks/matchDetails/actions';
-import { selectTeams } from '../../store/ducks/matchDetails/selects';
+import { selectIsMatchActive } from '../../store/ducks/matchDetails/selects';
 import Menu from './Menu';
 
 export default function Match() {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const [fst, snd] = useSelector(selectTeams(id));
+  const isMatchActive = useSelector(selectIsMatchActive(id));
 
   useEffect(() => {
     dispatch(loadRequest(id));
   }, [dispatch, id]);
 
+  if (!isMatchActive)
+    return null; // Return loading
+
   return (
     <Container>
-      <Team teamData={fst} />
-      <Menu id={id} />
-      <Team teamData={snd} flipped />
+      <Team />
+      <Menu />
+      <Team flipped />
     </Container>
   );
 }

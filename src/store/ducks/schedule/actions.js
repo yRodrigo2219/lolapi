@@ -14,8 +14,9 @@ export function loadSuccess(response) {
   }
 }
 
-export function loadFailure() {
+export function loadFailure(filter) {
   return {
     type: SCHEDULE.FAILURE,
+    payload: filter,
   }
 }

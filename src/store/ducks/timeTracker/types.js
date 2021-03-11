@@ -4,5 +4,4 @@ export const TIME = Object.freeze({
   REQUEST: '@time/LOAD_REQUEST',
   SUCCESS: '@time/LOAD_SUCCESS',
   FAILURE: '@time/LOAD_FAILURE',
-  WINDOW_ENDED: '@time/WINDOW_ENDED',
 });

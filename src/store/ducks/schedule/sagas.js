@@ -6,15 +6,22 @@ import { leagueFilter } from '../leagues/selects';
 import { SCHEDULE } from './types';
 import { LEAGUE } from '../leagues/types';
 
-function* load(action) {
+const promiseDelay = delay => new Promise(resolve => setTimeout(resolve, delay));
+
+function* load({ payload }) {
   try {
-    const filter = action.payload;
-    const response = yield call(getSchedule, filter);
+    const response = yield call(getSchedule, payload);
 
     yield put(loadSuccess(response));
   } catch (err) {
-    yield put(loadFailure());
+    yield put(loadFailure(payload));
   }
+}
+
+function* onError({ payload }) {
+  yield call(promiseDelay, 1000);
+
+  yield put(loadRequest(payload));
 }
 
 function* updateSchedule() {
@@ -26,4 +33,5 @@ function* updateSchedule() {
 export default function* schedule() {
   yield takeLatest(LEAGUE.SUCCESS, updateSchedule);
   yield takeLatest(SCHEDULE.REQUEST, load);
+  yield takeLatest(SCHEDULE.FAILURE, onError);
 }

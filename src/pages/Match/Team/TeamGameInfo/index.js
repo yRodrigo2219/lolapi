@@ -1,5 +1,11 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
+import {
+  selectTeamParticipants,
+  selectTeamData,
+  selectTeamSide,
+} from '../../../../store/ducks/gameInfo/selects';
 import {
   Container,
   StatsList,
@@ -7,29 +13,33 @@ import {
 } from './styles';
 import Stat, { STAT } from './Stat';
 
-import LiveGame from '../../../../mocks/liveFeedWindow.json'
+export default function TeamGameInfo({ flipped, id }) {
+  const teamPart = useSelector(selectTeamParticipants(id));
+  const teamSide = useSelector(selectTeamSide(id));
+  const teamData = useSelector(selectTeamData(teamSide));
 
-export default function TeamGameInfo({ flipped }) {
-  const blueStats = LiveGame.frames[LiveGame.frames.length - 1].redTeam;
+  if (teamSide === '')
+    return null;
+
   return (
     <Container>
       <StatsList flipped={flipped}>
-        <Stat content={blueStats.totalGold}
+        <Stat content={teamData.totalGold}
           stat={STAT.COIN} flipped={flipped} />
 
-        <Stat content={blueStats.totalKills}
+        <Stat content={teamData.totalKills}
           stat={STAT.SWORD} flipped={flipped} />
 
-        <Stat content={blueStats.towers}
+        <Stat content={teamData.towers}
           stat={STAT.TOWER} flipped={flipped} />
 
-        <Stat content={blueStats.barons}
+        <Stat content={teamData.barons}
           stat={STAT.BARON} flipped={flipped} />
 
-        <Stat content={blueStats.inhibitors}
+        <Stat content={teamData.inhibitors}
           stat={STAT.INHIB} flipped={flipped} />
 
-        <Stat content={blueStats.dragons}
+        <Stat content={teamData.dragons}
           stat={STAT.DRAKE} flipped={flipped} />
 
       </StatsList>
