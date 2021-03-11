@@ -25,6 +25,7 @@ export const Container = styled(Link)`
 export const LeagueImg = styled.img`
   margin: 8px 0px 0px 8px;
   height: 80px;
+  width: 80px;
 `;
 
 export const Center = styled.div`
@@ -54,5 +55,6 @@ export const TeamInfo = styled.span`
 
   img {
     height: 88px;
+    width: 88px;
   }
 `;
