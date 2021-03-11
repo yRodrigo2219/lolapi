@@ -7,6 +7,7 @@ export const STAT_TYPE = Object.freeze({
   SWORD: 'sword',
   TOWER: 'tower',
   BARON: 'baron',
+  CREEP: 'creep',
 });
 
 export default function StatSVG({ stat }) {
@@ -24,9 +25,15 @@ export default function StatSVG({ stat }) {
     case STAT_TYPE.BARON:
       return BaronSVG();
     default:
-      return CoinSVG();
+      return CreepSVG();
   }
 }
+
+const CreepSVG = () => (
+  <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M11 0H9L0 14L10 24L20 14L11 0ZM4 12L6 10L10 14L14 10L16 12L10 21L4 12Z" fill="#7108A6" />
+  </svg>
+)
 
 const CoinSVG = () => (
   <svg width="40" height="36" viewBox="0 0 40 36" xmlns="http://www.w3.org/2000/svg">

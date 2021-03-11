@@ -8,6 +8,10 @@ export const StatsList = styled.div`
   flex-direction: ${props => (
     props.flipped ? 'row-reverse' : 'row'
   )};
+  margin-bottom: 20px;
 `;
 
-export const PlayerList = styled.div``;
+export const PlayerList = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

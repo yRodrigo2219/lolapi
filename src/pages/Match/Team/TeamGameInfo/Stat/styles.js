@@ -10,7 +10,9 @@ export const Container = styled.span`
   border-radius: 4px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   align-items: center;
-  margin: 0px 18px 18px 0px;
+  margin: ${props => (
+    props.flipped ? '0px 0px 18px 18px' : '0px 18px 18px 0px'
+  )};
   flex-direction:${props => (
     props.flipped ? 'row-reverse' : 'row'
   )};
@@ -18,7 +20,7 @@ export const Container = styled.span`
   svg {
     margin: 0px 10px;
     fill: ${props => (
-    props.side === 'blue' ? Colors.blueSide : Colors.redSide
+    props.side === 'blueTeam' ? Colors.blueSide : Colors.redSide
   )};
    transform: ${props => (
     props.flipped ? 'scaleX(-1)' : 'scaleX(1)'

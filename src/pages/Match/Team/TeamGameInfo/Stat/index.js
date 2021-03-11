@@ -4,9 +4,9 @@ import { Container } from './styles';
 import StatSVG, { STAT_TYPE } from '../../../../../assets/svgs/stats';
 import DrakeSVG from '../../../../../assets/svgs/stats/drakes';
 
-export default function Stat({ content, stat, flipped }) {
+export default function Stat({ content, stat, flipped, side }) {
   return (
-    <Container flipped={flipped}>
+    <Container flipped={flipped} side={side}>
       <StatSVG stat={stat} />
       {
         stat === STAT_TYPE.DRAKE ?
