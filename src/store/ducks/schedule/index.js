@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   live: [],
   next: [],
   newer: '',
-  loading: false,
+  loading: true,
   error: false
 };
 
@@ -45,7 +45,6 @@ export default function reducer(state = INITIAL_STATE, action) {
     case SCHEDULE.FAILURE:
       return {
         ...state,
-        loading: false,
         error: true
       }
     default:

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   Container,
 } from './styles';
+import Loader from '../../components/Loader';
 import Team from './Team';
 import { loadRequest } from '../../store/ducks/matchDetails/actions';
 import { selectIsMatchActive } from '../../store/ducks/matchDetails/selects';
@@ -20,7 +21,7 @@ export default function Match() {
   }, [dispatch, id]);
 
   if (!isMatchActive)
-    return null; // Return loading
+    return <Loader />;
 
   return (
     <Container>
