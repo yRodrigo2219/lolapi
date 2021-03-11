@@ -10,6 +10,7 @@ import {
   Center
 } from './styles';
 import { leagueImage } from '../../../../store/ducks/leagues/selects';
+import { resizeImgSrc } from '../../../../services/riotResize';
 
 export default function LiveMatch({ data }) {
   const lgImage = useSelector(leagueImage(data.league.slug));
@@ -19,13 +20,13 @@ export default function LiveMatch({ data }) {
 
   return (
     <Container to={`/match/${id}`}>
-      <LeagueImg src={`https://am-a.akamaihd.net/image?resize=80:&f=${lgImage}`} />
+      <LeagueImg src={resizeImgSrc(80, lgImage)} alt="" />
 
       <Center>
         <ScoreBoard>
           <TeamInfo>
             <span>{fstTeam.code}</span>
-            <img src={`https://am-a.akamaihd.net/image?resize=88:&f=${fstTeam.image}`} alt="" />
+            <img src={resizeImgSrc(88, fstTeam.image)} alt="" />
           </TeamInfo>
           <Score>
             <span>{fstTeam.result.gameWins}</span>
@@ -33,7 +34,7 @@ export default function LiveMatch({ data }) {
           <span>{sndTeam.result.gameWins}</span>
           </Score>
           <TeamInfo>
-            <img src={`https://am-a.akamaihd.net/image?resize=88:&f=${sndTeam.image}`} alt="" />
+            <img src={resizeImgSrc(88, sndTeam.image)} alt="" />
             <span>{sndTeam.code}</span>
           </TeamInfo>
         </ScoreBoard>

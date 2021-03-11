@@ -23,9 +23,8 @@ export const Container = styled(Link)`
 `;
 
 export const LeagueImg = styled.img`
-  margin: 8px 0px 0px 8px;
-  height: 80px;
-  width: 80px;
+  align-self: center;
+  margin-left: 8px;
 `;
 
 export const Center = styled.div`
@@ -52,9 +51,4 @@ export const Score = styled.span`
 export const TeamInfo = styled.span`
   display: flex;
   align-items: center;
-
-  img {
-    height: 88px;
-    width: 88px;
-  }
 `;

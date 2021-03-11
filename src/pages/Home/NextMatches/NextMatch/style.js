@@ -32,9 +32,8 @@ export const Center = styled.div`
 `;
 
 export const LeagueImage = styled.img`
-  margin: 8px 0px 0px 8px;
-  height: 56px;
-  width: 56px;
+  align-self: center;
+  margin-left: 4px;
 `;
 
 export const ScoreBoard = styled.span`
@@ -52,11 +51,6 @@ export const Score = styled.span`
 export const TeamInfo = styled.span`
   display: flex;
   align-items: center;
-
-  img {
-    height: 64px;
-    width: 64px;
-  }
 `;
 
 export const MatchTime = styled.span`

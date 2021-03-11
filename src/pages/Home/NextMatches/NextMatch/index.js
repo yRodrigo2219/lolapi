@@ -12,6 +12,7 @@ import {
   MatchTime
 } from './style';
 import { leagueImage } from '../../../../store/ducks/leagues/selects';
+import { resizeImgSrc } from '../../../../services/riotResize';
 
 export default function NextMatch({ data }) {
   const lgImage = useSelector(leagueImage(data.league.slug));
@@ -22,17 +23,17 @@ export default function NextMatch({ data }) {
 
   return (
     <Container to={`/match/${id}`}>
-      <LeagueImage src={`https://am-a.akamaihd.net/image?resize=56:&f=${lgImage}`} />
+      <LeagueImage src={resizeImgSrc(56, lgImage)} alt="" />
 
       <Center>
         <ScoreBoard>
           <TeamInfo>
             <span>{fstTeam.code}</span>
-            <img src={`https://am-a.akamaihd.net/image?resize=64:&f=${fstTeam.image}`} alt="" />
+            <img src={resizeImgSrc(64, fstTeam.image)} alt="" />
           </TeamInfo>
           <Score>:</Score>
           <TeamInfo>
-            <img src={`https://am-a.akamaihd.net/image?resize=64:&f=${sndTeam.image}`} alt="" />
+            <img src={resizeImgSrc(64, sndTeam.image)} alt="" />
             <span>{sndTeam.code}</span>
           </TeamInfo>
         </ScoreBoard>

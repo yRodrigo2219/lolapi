@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const CLOCK_URL = 'http://worldtimeapi.org/api';
+const CLOCK_URL = 'https://worldtimeapi.org/api';
 const TIME_ZONE = 'timezone/Etc/UTC.json';
 
 export async function getTime() {

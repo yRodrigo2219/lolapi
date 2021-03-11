@@ -8,6 +8,7 @@ import {
   updateGameSuccess,
   updateGameFailure,
 } from './actions';
+import { selectActiveGame } from './selects';
 import { selectNextGameId } from '../matchDetails/selects';
 import { GAME } from './types';
 import { MATCH } from '../matchDetails/types';
@@ -39,11 +40,14 @@ function* initializeGame() {
 }
 
 function* loadChange({ payload }) {
-  yield put(initGameRequest(payload));
+  const activeGame = yield select(selectActiveGame);
+
+  if (activeGame !== payload)
+    yield put(initGameRequest(payload));
 }
 
 export default function* match() {
-  //yield takeLatest(GAME.CHANGE_GAME, loadChange)
+  yield takeLatest(GAME.CHANGE_GAME, loadChange)
   yield takeLatest(MATCH.SUCCESS, initializeGame);
   yield takeLatest(GAME.INIT_REQUEST, loadInit);
   yield takeLatest(GAME.UPDATE_REQUEST, loadUpdate);

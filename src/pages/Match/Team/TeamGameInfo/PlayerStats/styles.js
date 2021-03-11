@@ -23,6 +23,8 @@ export const Container = styled.div`
 export const Runes = styled.span`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 
   span {
     display: contents;
@@ -34,8 +36,8 @@ export const Runes = styled.span`
   }
 
   img {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
   }
 `;
 

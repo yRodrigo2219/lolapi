@@ -6,6 +6,7 @@ import { updateGameRequest } from '../gameInfo/actions';
 import { selectActiveGame } from '../gameInfo/selects';
 import { selectNow } from './selects';
 import { TIME } from './types';
+import { GAME } from '../gameInfo/types';
 
 const promiseDelay = delay => new Promise(resolve => setTimeout(resolve, delay));
 
@@ -47,6 +48,7 @@ function* update() {
 
 export default function* timeTracker() {
   yield takeLatest(TIME.REQUEST, load);
+  yield takeLatest(GAME.INIT_SUCCESS, update);
   yield takeLatest(TIME.UPDATE, update);
   yield takeLatest(TIME.FAILURE, onError);
 }
