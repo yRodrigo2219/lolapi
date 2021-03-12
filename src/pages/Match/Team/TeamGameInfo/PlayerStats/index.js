@@ -11,7 +11,7 @@ import {
   Bag,
 } from './styles';
 
-export default function PlayerStats() {
+export default function PlayerStats({ flipped }) {
   const keystoneImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png';
   const runeSecImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7204_Resolve.png';
   const champImg = 'https://ddragon.leagueoflegends.com/cdn/11.4.1/img/champion/Gragas.png';
@@ -36,18 +36,18 @@ export default function PlayerStats() {
   const gold = 15487;
 
   return (
-    <Container>
+    <Container flipped={flipped}>
       <div>
         <Runes>
           <span><img src={keystoneImg} alt='' /></span>
           <img src={runeSecImg} alt='' />
         </Runes>
-        <Player>
+        <Player flipped={flipped}>
           <img src={champImg} alt='' />
           <Level>{level}</Level>
           <span>
             <h2>{name}</h2>
-            <Health hp={currentHeath}><span>{currentHeath}%</span><div></div></Health>
+            <Health hp={currentHeath} flipped={flipped}><span>{currentHeath}%</span><div></div></Health>
             <span>{`${kills} / ${deaths} / ${assists}`}</span>
           </span>
         </Player>
@@ -62,7 +62,7 @@ export default function PlayerStats() {
         </CreepScore>
       </div>
       <div>
-        <Bag>
+        <Bag flipped={flipped}>
           <span>
             <span>{gold}</span>
             <StatSVG stat={STAT_TYPE.COIN} />

@@ -13,10 +13,20 @@ export const Container = styled.div`
   box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
   margin-bottom: 20px;
   justify-content: space-between;
+  flex-direction: ${({ flipped }) => (
+    flipped ?
+      'row-reverse' :
+      'row'
+  )};
 
   >div {
     display: flex;
     align-items: center;
+    flex-direction: ${({ flipped }) => (
+    flipped ?
+      'row-reverse' :
+      'row'
+  )};
   }
 `;
 
@@ -46,6 +56,11 @@ export const Player = styled.span`
   align-items: center;
   position: relative;
   filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+  flex-direction: ${({ flipped }) => (
+    flipped ?
+      'row-reverse' :
+      'row'
+  )};
 
   img {
     height: 72px;
@@ -92,13 +107,23 @@ export const Level = styled.h1`
 `;
 
 export const Health = styled.span`
+  display: flex;
   height: 20px;
   background-color: ${Colors.secondaryDark};
   border: 1px solid #3B174D;
   border-radius: 2px;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
   position: relative;
-  left: -3px;
+  left: ${({ flipped }) => (
+    flipped ?
+      '3px' :
+      '-3px'
+  )};
+  flex-direction: ${({ flipped }) => (
+    flipped ?
+      'row-reverse' :
+      'row'
+  )};
 
   >div {
     height: 100%;
@@ -109,7 +134,11 @@ export const Health = styled.span`
 
   >span {
     position: absolute;
-    left: 5px;
+    left: ${({ flipped }) => (
+    flipped ?
+      '88px' :
+      '5px'
+  )};
     color: ${Colors.secondary};
     font-size: 16px;
     line-height: 20px;
@@ -150,6 +179,11 @@ export const Bag = styled.span`
   div {
     display: flex;
     justify-content: space-between;
+    flex-direction: ${({ flipped }) => (
+    flipped ?
+      'row-reverse' :
+      'row'
+  )};
   }
   
   >span {

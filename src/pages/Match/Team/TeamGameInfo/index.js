@@ -53,7 +53,7 @@ export default function TeamGameInfo({ flipped, id }) {
             ));
 
             return (
-              <PlayerStats key={id} />
+              <PlayerStats key={id} flipped={flipped} />
             )
           })
         }
