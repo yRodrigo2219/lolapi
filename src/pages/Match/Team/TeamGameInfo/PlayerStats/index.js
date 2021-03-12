@@ -69,7 +69,7 @@ export default function PlayerStats({ flipped }) {
           </span>
           <div>
             {
-              itens.map(item => <img src={item} alt='' />)
+              itens.map((item, index) => <img src={item} alt='' key={index} />)
             }
           </div>
         </Bag>

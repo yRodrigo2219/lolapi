@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   unix: 0,
   now: 0,
   initialUnix: 0,
-  delay: 20000,
+  delay: 2,
   loading: false,
   error: false
 };
@@ -13,7 +13,7 @@ export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case TIME.UPDATE:
       const now =
-        state.unix + (Date.now() - state.initialUnix) - state.delay;
+        state.unix + (Date.now() - state.initialUnix) - (state.delay * 10000);
 
       return {
         ...state,
@@ -41,6 +41,16 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         loading: false,
         error: true
+      }
+    case TIME.SET_DELAY:
+      let delay = Number.parseInt(action.payload);
+
+      if (delay < 2 || Number.isNaN(delay))
+        delay = 2;
+
+      return {
+        ...state,
+        delay,
       }
     default:
       return state;

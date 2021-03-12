@@ -79,6 +79,11 @@ export const Player = styled.span`
       line-height: 24px;
       font-size: 16px;
       white-space: nowrap;
+      text-align: ${({ flipped }) => (
+    flipped ?
+      'right' :
+      'left'
+  )};
       overflow: hidden;
       color: ${Colors.primaryDark};
     }
