@@ -1,6 +1,6 @@
 import React from 'react';
 
-import StatSVG from '../../../../../assets/svgs/stats/index';
+import StatSVG, { STAT_TYPE } from '../../../../../assets/svgs/stats/index';
 import {
   Container,
   Runes,
@@ -15,6 +15,15 @@ export default function PlayerStats() {
   const keystoneImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png';
   const runeSecImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7204_Resolve.png';
   const champImg = 'https://ddragon.leagueoflegends.com/cdn/11.4.1/img/champion/Gragas.png';
+  const itens = [
+    'https://ddragon.leagueoflegends.com/cdn/11.4.1/img/item/6671.png',
+    'https://ddragon.leagueoflegends.com/cdn/11.4.1/img/item/6671.png',
+    null,
+    null,
+    null,
+    null,
+    null,
+  ]
   const level = 16;
   const name = 'FLY Josedeodo';
   const currentHeath = 85;
@@ -24,6 +33,7 @@ export default function PlayerStats() {
   const cs = 178;
   const wardP = 42;
   const wardD = 28;
+  const gold = 15487;
 
   return (
     <Container>
@@ -53,7 +63,15 @@ export default function PlayerStats() {
       </div>
       <div>
         <Bag>
-
+          <span>
+            <span>{gold}</span>
+            <StatSVG stat={STAT_TYPE.COIN} />
+          </span>
+          <div>
+            {
+              itens.map(item => <img src={item} alt='' />)
+            }
+          </div>
         </Bag>
       </div>
     </Container>

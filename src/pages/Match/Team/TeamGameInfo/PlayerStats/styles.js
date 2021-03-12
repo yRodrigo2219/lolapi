@@ -144,5 +144,39 @@ export const CreepScore = styled.span`
 export const Bag = styled.span`
   display: flex;
   flex-direction: column;
-  width: 328px;
+  width: 332px;
+  max-height: 72px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  >span {
+    display: flex;
+    align-items: center;
+    height: 24px;
+    align-self: center;
+
+    span {
+      color: #E68E0B;
+      line-height: 24px;
+      font-size: 24px;
+    }
+
+    svg {
+      width: 20px;
+      fill: #E68E0B;
+    }
+  }
+
+  div > img {
+    box-sizing: border-box;
+    width: 44px;
+    height: 44px;
+    border: 2px solid ${Colors.primaryDark};
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 8px;
+    background-color: ${Colors.primary};
+  }
 `;
