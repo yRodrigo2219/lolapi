@@ -8,9 +8,10 @@ export const Container = styled.div`
 `;
 
 export const Options = styled.div`
+  position: relative;
   display: flex;
   background-color: ${Colors.secondary};
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 10px;
   width: 240px;
   height: 240px;
@@ -93,4 +94,46 @@ export const GameButton = styled.button`
   :active {
     transform: translateY(2px);
   }
+`;
+
+export const GameStatus = styled.span`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right: 25%;
+  bottom: -32px;
+  width: 120px;
+  min-height: 72px;
+  background-color: ${Colors.secondary};
+  border-radius: 4px;
+  fill: ${Colors.primaryDark};
+  color: ${Colors.primary};
+  font-size: 24px;
+  line-height: 32px;
+
+  >div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    >div {
+      display: flex;
+      align-items: center;
+
+      span {
+        margin-left: 2px;
+        width: 60px;
+      }
+    }
+  }
+`;
+
+export const Latency = styled.svg`
+  fill: ${({ ping }) => (
+    ping < 500 ? '#1EA608' :
+      ping < 1000 ? 'orange' :
+        'red'
+  )};
+  width: 24px;
+  height: 20px;
 `;
