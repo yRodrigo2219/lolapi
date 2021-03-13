@@ -122,7 +122,7 @@ export const GameStatus = styled.span`
 
       span {
         margin-left: 2px;
-        width: 60px;
+        min-width: 60px;
       }
     }
   }

@@ -10,7 +10,12 @@ import {
   Latency,
 } from './styles';
 import { selectGames } from '../../../store/ducks/matchDetails/selects';
-import { selectActiveGame } from '../../../store/ducks/gameInfo/selects';
+import {
+  selectActiveGame,
+  selectGameState,
+  selectPing,
+  selectTimeNowFormatted,
+} from '../../../store/ducks/gameInfo/selects';
 import { selectDelay } from '../../../store/ducks/timeTracker/selects';
 import { changeGame } from '../../../store/ducks/gameInfo/actions';
 import { setDelay } from '../../../store/ducks/timeTracker/actions';
@@ -46,9 +51,9 @@ export default function Menu() {
   const games = useSelector(selectGames);
   const activeGame = useSelector(selectActiveGame);
   const delay = useSelector(selectDelay);
-  const gameStatus = 'Finished';
-  const gameTime = '36:50';
-  const ping = 250;
+  const gameState = useSelector(selectGameState);
+  const gameTime = useSelector(selectTimeNowFormatted);
+  const ping = useSelector(selectPing);
   const dispatch = useDispatch();
 
   if (games.length === 0)
@@ -86,7 +91,7 @@ export default function Menu() {
 
         <GameStatus>
           <div>
-            <span>{gameStatus}</span>
+            <span>{gameState}</span>
             <Latency ping={ping}>
               <LatencyPathSVG />
             </Latency>

@@ -2,6 +2,10 @@ import { GAME } from './types';
 
 const INITIAL_STATE = {
   activeGame: '',
+  latency: 0,
+  gameState: 'Unstarted',
+  requestDate: 0,
+  requestPing: 0,
   time: {
     initial: 0,
     now: 0,
@@ -19,6 +23,7 @@ export default function reducer(state = INITIAL_STATE, action) {
 
       return {
         ...state,
+        requestDate: Date.now(),
         activeGame,
         loading: true,
       }
@@ -29,9 +34,10 @@ export default function reducer(state = INITIAL_STATE, action) {
 
       const gameDate = new Date(data.rfc460Timestamp).getTime();
 
-
       return {
         ...state,
+        gameState: data.gameState,
+        requestPing: Date.now() - state.requestDate,
         time: {
           ...state.time,
           initial: gameDate,
@@ -50,10 +56,10 @@ export default function reducer(state = INITIAL_STATE, action) {
       const date = new Date(lastFrame.rfc460Timestamp).getTime();
       const now = (date - state.time.initial);
 
-      console.log("Game time: " + now + "ms");
-
       return {
         ...state,
+        gameState: lastFrame.gameState,
+        requestPing: Date.now() - state.requestDate,
         time: {
           ...state.time,
           now,
@@ -70,6 +76,10 @@ export default function reducer(state = INITIAL_STATE, action) {
       }
     case GAME.CHANGE_GAME:
     case GAME.UPDATE_REQUEST:
+      return {
+        ...state,
+        requestDate: Date.now(),
+      }
     default:
       return state;
   }
