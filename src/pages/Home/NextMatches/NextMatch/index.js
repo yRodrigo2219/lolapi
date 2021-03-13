@@ -12,7 +12,7 @@ import {
   MatchTime
 } from './style';
 import { leagueImage } from '../../../../store/ducks/leagues/selects';
-import { resizeImgSrc } from '../../../../services/riotResize';
+import { resizeImgSrc } from '../../../../services/riot';
 
 export default function NextMatch({ data }) {
   const lgImage = useSelector(leagueImage(data.league.slug));

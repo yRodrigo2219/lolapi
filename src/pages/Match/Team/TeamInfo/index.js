@@ -4,6 +4,7 @@ import {
   Container,
   InfoContainer
 } from './styles';
+import { resizeImgSrc } from '../../../../services/riot';
 
 export default function TeamInfo(props) {
   const {
@@ -16,7 +17,7 @@ export default function TeamInfo(props) {
 
   return (
     <Container flipped={!!flipped}>
-      <img src={src} alt='' />
+      <img src={resizeImgSrc(180, src)} alt='' />
       <InfoContainer flipped={!!flipped}>
         {
           !!flipped ?

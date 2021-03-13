@@ -10,7 +10,7 @@ import {
   Center
 } from './styles';
 import { leagueImage } from '../../../../store/ducks/leagues/selects';
-import { resizeImgSrc } from '../../../../services/riotResize';
+import { resizeImgSrc } from '../../../../services/riot';
 
 export default function LiveMatch({ data }) {
   const lgImage = useSelector(leagueImage(data.league.slug));
