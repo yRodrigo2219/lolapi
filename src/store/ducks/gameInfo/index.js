@@ -3,7 +3,7 @@ import { GAME } from './types';
 const INITIAL_STATE = {
   activeGame: '',
   latency: 0,
-  gameState: 'Unstarted',
+  gameState: '',
   requestDate: 0,
   requestPing: 0,
   time: {
@@ -69,17 +69,27 @@ export default function reducer(state = INITIAL_STATE, action) {
         error: false
       };
     case GAME.INIT_FAILURE:
+      return {
+        ...state,
+        gameState: 'unstarted',
+        time: {
+          ...state.time,
+          now: 0,
+        },
+        error: true
+      }
     case GAME.UPDATE_FAILURE:
       return {
         ...state,
+        gameState: state.gameState === 'unstarted' ? state.gameState : 'error',
         error: true
       }
-    case GAME.CHANGE_GAME:
     case GAME.UPDATE_REQUEST:
       return {
         ...state,
         requestDate: Date.now(),
       }
+    case GAME.CHANGE_GAME:
     default:
       return state;
   }

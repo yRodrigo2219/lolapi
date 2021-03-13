@@ -36,8 +36,8 @@ export const selectTeamData = side => (
 
 export const selectTimeNowFormatted = state => {
   const now = state.gameInfo.time.now;
-  const minutes = Number.parseInt((now / 1000) / 60);
-  const seconds = Number.parseInt((now / 1000) % 60);
+  const minutes = ('00' + Number.parseInt((now / 1000) / 60)).slice(-2);
+  const seconds = ('00' + Number.parseInt((now / 1000) % 60)).slice(-2);
   const date = `${minutes}:${seconds}`;
 
   return date;
@@ -54,8 +54,8 @@ export const selectGameState = state => {
     case 'finished':
       gameState = 'Finished';
       break;
-    case 'unstarted':
-      gameState = 'Unstarted';
+    case 'error':
+      gameState = 'API Error';
       break;
     case 'in_game':
       gameState = 'Playing';
@@ -64,7 +64,7 @@ export const selectGameState = state => {
       gameState = 'Paused';
       break;
     default:
-      gameState = 'API ERROR';
+      gameState = 'Unstarted';
   }
 
   return gameState;
