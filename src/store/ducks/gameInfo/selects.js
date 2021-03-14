@@ -13,6 +13,7 @@ export const selectMetadata = state => (
 export const selectData = state => (
   state.gameInfo.data
 )
+
 export const selectTeamParticipants = teamId => (
   state => (
     state.gameInfo.metadata.blueTeamMetadata.esportsTeamId === teamId ?

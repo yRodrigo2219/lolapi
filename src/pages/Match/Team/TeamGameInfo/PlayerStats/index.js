@@ -11,7 +11,7 @@ import {
   Bag,
 } from './styles';
 
-export default function PlayerStats({ flipped }) {
+export default function PlayerStats({ flipped, player, data }) {
   const keystoneImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png';
   const runeSecImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7204_Resolve.png';
   const champImg = 'https://ddragon.leagueoflegends.com/cdn/11.4.1/img/champion/Gragas.png';
@@ -24,16 +24,16 @@ export default function PlayerStats({ flipped }) {
     null,
     null,
   ]
-  const level = 16;
-  const name = 'FLY Josedeodo';
-  const currentHeath = 85;
-  const kills = 12;
-  const deaths = 15;
-  const assists = 10;
-  const cs = 178;
-  const wardP = 42;
-  const wardD = 28;
-  const gold = 15487;
+  const level = data.level;
+  const name = player.summonerName;
+  const currentHealth = Number.parseInt((data.currentHealth / data.maxHealth) * 100);
+  const kills = data.kills;
+  const deaths = data.deaths;
+  const assists = data.assists;
+  const cs = data.creepScore;
+  const wardP = 0;
+  const wardD = 0;
+  const gold = data.totalGold;
 
   return (
     <Container flipped={flipped}>
@@ -47,7 +47,7 @@ export default function PlayerStats({ flipped }) {
           <Level>{level}</Level>
           <span>
             <h2>{name}</h2>
-            <Health hp={currentHeath} flipped={flipped}><span>{currentHeath}%</span><div></div></Health>
+            <Health hp={currentHealth} flipped={flipped}><span>{currentHealth}%</span><div></div></Health>
             <span>{`${kills} / ${deaths} / ${assists}`}</span>
           </span>
         </Player>
