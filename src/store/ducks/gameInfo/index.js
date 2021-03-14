@@ -17,6 +17,8 @@ const INITIAL_STATE = {
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
+  console.log(state.time.now, state.time.initial);
+
   switch (action.type) {
     case GAME.INIT_REQUEST:
       const activeGame = action.payload;
@@ -54,7 +56,6 @@ export default function reducer(state = INITIAL_STATE, action) {
 
       const lastFrame = dataFrames[dataFrames.length - 1];
       const date = new Date(lastFrame.rfc460Timestamp).getTime();
-      const now = (date - state.time.initial);
 
       return {
         ...state,
@@ -62,10 +63,12 @@ export default function reducer(state = INITIAL_STATE, action) {
         requestPing: Date.now() - state.requestDate,
         time: {
           ...state.time,
-          now,
+          initial: (state.time.initial === 0 ? date : state.time.initial),
+          now: (state.time.initial === 0 ? 0 : (date - state.time.initial)),
         },
         metadata: metaData,
         data: lastFrame,
+        loading: false,
         error: false
       };
     case GAME.INIT_FAILURE:
@@ -74,6 +77,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         gameState: 'unstarted',
         time: {
           ...state.time,
+          initial: 0,
           now: 0,
         },
         error: true

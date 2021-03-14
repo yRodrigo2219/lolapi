@@ -30,7 +30,6 @@ export default function reducer(state = INITIAL_STATE, action) {
     case LEAGUE.FAILURE:
       return {
         ...state,
-        loading: false,
         error: true
       }
     default:

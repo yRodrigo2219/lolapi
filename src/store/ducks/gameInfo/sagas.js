@@ -19,7 +19,6 @@ function* loadInit({ payload }) {
 
     yield put(initGameSuccess(response));
   } catch (err) {
-    console.log(err);
     yield put(initGameFailure());
   }
 }

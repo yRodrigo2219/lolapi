@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadRequest as getUpcoming } from '../../store/ducks/leagues/actions';
-import { areMatchesLoaded } from '../../store/ducks/schedule/selects';
+import { requestHome as getUpcoming } from '../../store/ducks/pages/actions';
+import { selectIsHomeLoading } from '../../store/ducks/pages/selects';
 
 import { Container, FreeSpace } from './styles';
 import Loader from '../../components/Loader';
@@ -15,7 +15,7 @@ export default function Home() {
     dispatch(getUpcoming());
   }, [dispatch]);
 
-  if (!useSelector(areMatchesLoaded))
+  if (useSelector(selectIsHomeLoading))
     return <Loader />;
 
   return (
