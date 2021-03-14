@@ -139,9 +139,15 @@ export const Health = styled.span`
 
   >span {
     position: absolute;
+    width: 34px;
+    text-align: ${({ flipped }) => (
+    flipped ?
+      'right' :
+      'left'
+  )};
     left: ${({ flipped }) => (
     flipped ?
-      '88px' :
+      '80px' :
       '5px'
   )};
     color: ${Colors.secondary};

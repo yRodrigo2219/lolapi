@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { getChampionImage } from '../../../../../services/riot';
 import StatSVG, { STAT_TYPE } from '../../../../../assets/svgs/stats/index';
 import {
   Container,
@@ -14,7 +15,7 @@ import {
 export default function PlayerStats({ flipped, player, data }) {
   const keystoneImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png';
   const runeSecImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7204_Resolve.png';
-  const champImg = 'https://ddragon.leagueoflegends.com/cdn/11.4.1/img/champion/Gragas.png';
+  const champImg = getChampionImage(72, '11.5.1', player.championId);
   const itens = [
     'https://ddragon.leagueoflegends.com/cdn/11.4.1/img/item/6671.png',
     'https://ddragon.leagueoflegends.com/cdn/11.4.1/img/item/6671.png',
