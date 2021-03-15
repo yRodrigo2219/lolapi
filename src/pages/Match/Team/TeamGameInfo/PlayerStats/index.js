@@ -51,7 +51,6 @@ export default function PlayerStats({ flipped, player, data }) {
     } else {
       items.push(null);
     }
-
   }
 
   const level = data.level;
@@ -61,8 +60,8 @@ export default function PlayerStats({ flipped, player, data }) {
   const deaths = data.deaths;
   const assists = data.assists;
   const cs = data.creepScore;
-  const wardP = 0;
-  const wardD = 0;
+  const wardP = participant.wardsPlaced;
+  const wardD = participant.wardsDestroyed;
   const gold = data.totalGold;
 
   return (
