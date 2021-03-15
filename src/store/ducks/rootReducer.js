@@ -7,6 +7,7 @@ import gameInfo from './gameInfo';
 import timeTracker from './timeTracker';
 import pages from './pages';
 import latestPatch from './latestPatch';
+import gameDetails from './gameDetails';
 
 const rootReducer = combineReducers({
   leagues,
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   timeTracker,
   pages,
   latestPatch,
+  gameDetails,
 });
 
 export default rootReducer;
