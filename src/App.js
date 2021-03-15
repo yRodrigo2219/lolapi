@@ -3,14 +3,13 @@ import { useDispatch } from 'react-redux';
 
 import Routes from './Routes';
 import GlobalStyle from './assets/css/GlobalStyle';
-import { loadRequest } from './store/ducks/timeTracker/actions';
+import { initApp } from './store/ducks/pages/actions';
 
 export default function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('test')
-    dispatch(loadRequest());
+    dispatch(initApp());
   }, [dispatch]);
 
   return (

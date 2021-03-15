@@ -23,3 +23,9 @@ export function requestMatch() {
     type: PAGES.REQUEST_MATCH,
   }
 }
+
+export function initApp() {
+  return {
+    type: PAGES.INIT_APP,
+  }
+}

@@ -6,6 +6,7 @@ import matchDetails from './matchDetails/sagas';
 import gameInfo from './gameInfo/sagas';
 import timeTracker from './timeTracker/sagas';
 import pages from './pages/sagas';
+import latestPatch from './latestPatch/sagas';
 
 export default function* rootSaga() {
   yield all([
@@ -15,5 +16,6 @@ export default function* rootSaga() {
     gameInfo(),
     timeTracker(),
     pages(),
+    latestPatch(),
   ]);
 }
