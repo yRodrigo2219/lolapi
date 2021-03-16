@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import { getChampionImage, getItemImage } from '../../../../../services/riot';
 import StatSVG, { STAT_TYPE } from '../../../../../assets/svgs/stats/index';
-import { selectPatchVersion } from '../../../../../store/ducks/latestPatch/selects';
+import { selectPatchVersion } from '../../../../../store/ducks/riotInfo/selects';
 import { selectParticipant } from '../../../../../store/ducks/gameDetails/selects';
 import {
   Container,

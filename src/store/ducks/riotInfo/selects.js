@@ -1,3 +1,3 @@
 export const selectPatchVersion = state => (
-  state.latestPatch
+  state.riotInfo.patch
 )
