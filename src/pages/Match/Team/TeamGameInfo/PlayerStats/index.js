@@ -35,7 +35,8 @@ export default function PlayerStats({ flipped, player, data }) {
       if (t === 3340 || t === 3363 || t === 3364) {
         trinket = t;
         j++;
-      } else if (!items.find(item => (item.id === t))) {
+      } else if (!items.find(item => (item.id === t))
+        && (t !== 2138 && t !== 2139 && t !== 2140)) {
         items.push({
           id: t,
           img: getItemImage(40, patchVersion, t),
