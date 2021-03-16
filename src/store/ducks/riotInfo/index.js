@@ -3,6 +3,7 @@ import { RIOT } from './types';
 const INITIAL_STATE = {
   patch: '',
   runes: [],
+  loading: true,
 }
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -16,6 +17,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         runes: action.payload,
+        loading: false,
       }
     default:
       return state;

@@ -33,7 +33,8 @@ export const Container = styled.div`
 export const Runes = styled.span`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-evenly;
   height: 100%;
 
   span {
@@ -42,12 +43,14 @@ export const Runes = styled.span`
     img {
       background-color: ${Colors.primaryDark};
       border-radius: 50%;
+      width: 32px;
+      height: 32px;
     }
   }
 
   img {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
   }
 `;
 

@@ -17,8 +17,6 @@ const INITIAL_STATE = {
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
-  console.log(state.time.now, state.time.initial);
-
   switch (action.type) {
     case GAME.INIT_REQUEST:
       const activeGame = action.payload;

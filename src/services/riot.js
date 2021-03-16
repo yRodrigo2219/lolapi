@@ -35,7 +35,7 @@ export function getItemImage(size, ver, itemId) {
   }
 }
 
-export async function getRuneImage(size, path) {
+export function getRuneImage(size, path) {
   const src = `${DDRAGON_URL}/cdn/img/${path}`;
 
   return resizeImgSrc(size, src);

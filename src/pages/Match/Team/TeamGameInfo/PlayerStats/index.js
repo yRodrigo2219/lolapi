@@ -1,9 +1,14 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { getChampionImage, getItemImage } from '../../../../../services/riot';
+import { getChampionImage, getItemImage, getRuneImage } from '../../../../../services/riot';
 import StatSVG, { STAT_TYPE } from '../../../../../assets/svgs/stats/index';
-import { selectPatchVersion } from '../../../../../store/ducks/riotInfo/selects';
+import {
+  selectPatchVersion,
+  selectIsLoading,
+  selectKeystonePath,
+  selectSubstylePath,
+} from '../../../../../store/ducks/riotInfo/selects';
 import { selectParticipant } from '../../../../../store/ducks/gameDetails/selects';
 import {
   Container,
@@ -16,14 +21,30 @@ import {
 } from './styles';
 
 export default function PlayerStats({ flipped, player, data }) {
+  const isLoading = useSelector(selectIsLoading);
   const patchVersion = useSelector(selectPatchVersion);
   const participant = useSelector(selectParticipant(player.participantId));
 
-  if (patchVersion === '' || participant === undefined)
+  const runes = {
+    styleId: -1,
+    subStyleId: -1,
+    keystoneId: -1,
+  };
+
+  if (participant !== undefined) {
+    runes.styleId = participant.perkMetadata.styleId;
+    runes.subStyleId = participant.perkMetadata.subStyleId;
+    runes.keystoneId = participant.perkMetadata.perks[0];
+  }
+
+  const keystonePath = useSelector(selectKeystonePath(runes.styleId, runes.keystoneId));
+  const substylePath = useSelector(selectSubstylePath(runes.subStyleId));
+
+  if (isLoading || participant === undefined)
     return null;
 
-  const keystoneImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/Resolve/GraspOfTheUndying/GraspOfTheUndying.png';
-  const runeSecImg = 'https://ddragon.leagueoflegends.com/cdn/img/perk-images/Styles/7204_Resolve.png';
+  const keystoneImg = getRuneImage(32, keystonePath);
+  const runeSecImg = getRuneImage(24, substylePath);
   const champImg = getChampionImage(72, patchVersion, player.championId);
   const items = [];
   let trinket = null;
