@@ -26,9 +26,13 @@ export function getChampionImage(size, ver, champ) {
 }
 
 export function getItemImage(size, ver, itemId) {
-  const src = `${DDRAGON_URL}/cdn/${ver}/img/item/${itemId}.png`;
+  if (itemId < 7000) {
+    const src = `${DDRAGON_URL}/cdn/${ver}/img/item/${itemId}.png`;
 
-  return resizeImgSrc(size, src);
+    return resizeImgSrc(size, src);
+  } else {
+    return `https://gol.gg/_img/ornn-items/${itemId}.png`;
+  }
 }
 
 export async function getRuneImage(size, path) {

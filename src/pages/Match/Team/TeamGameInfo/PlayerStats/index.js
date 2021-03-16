@@ -38,7 +38,7 @@ export default function PlayerStats({ flipped, player, data }) {
       } else if (!items.find(item => (item.id === t))) {
         items.push({
           id: t,
-          img: getItemImage(44, patchVersion, t),
+          img: getItemImage(40, patchVersion, t),
         });
       } else {
         j++;
@@ -46,7 +46,7 @@ export default function PlayerStats({ flipped, player, data }) {
     } else if (i + 1 === j && trinket) {
       items.push({
         id: trinket,
-        img: getItemImage(44, patchVersion, trinket)
+        img: getItemImage(40, patchVersion, trinket)
       });
     } else {
       items.push(null);
@@ -100,7 +100,7 @@ export default function PlayerStats({ flipped, player, data }) {
             {
               items.map((item, index) => (
                 item === null ?
-                  <img alt='' key={index} /> :
+                  <img src='../imgs/emptyItem.png' alt='' key={index} /> :
                   <img src={item.img} alt='' key={index} />
               ))
             }
