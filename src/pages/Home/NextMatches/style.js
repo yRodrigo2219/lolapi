@@ -27,4 +27,20 @@ export const MatchList = styled.div`
   height: calc(100% - 82px);
   padding: 30px 44px 40px;
   overflow: auto;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${Colors.secondaryDark};
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: ${Colors.primary}; 
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${Colors.primaryDark}; 
+  }
 `;
