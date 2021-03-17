@@ -42,7 +42,6 @@ const changeGameOnClick = (dispatch, id) => (
 
 const setDelayOnChange = dispatch => (
   ({ target }) => {
-    console.log(target.value)
     dispatch(setDelay(target.value));
   }
 )

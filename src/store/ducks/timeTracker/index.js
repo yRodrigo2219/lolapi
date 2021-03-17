@@ -48,6 +48,9 @@ export default function reducer(state = INITIAL_STATE, action) {
       if (delay < 2 || Number.isNaN(delay))
         delay = 2;
 
+      if (delay > 99)
+        delay = 99;
+
       return {
         ...state,
         delay,
