@@ -41,6 +41,6 @@ export const MatchList = styled.div`
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: ${Colors.primaryDark}; 
+    background: ${Colors.primarySelect}; 
   }
 `;

@@ -22,12 +22,16 @@ export const MatchList = styled.div`
 `;
 
 export const NoMatches = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
   margin-top: 48px;
   max-width: 600px;
   min-width: 480px;
   text-align: center;
   color: ${Colors.secondary};
-  line-height: 96px;
+  line-height: 32px;
+  height: 96px;
   background-color: ${Colors.primaryDark};
   font-size: 32px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
