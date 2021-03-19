@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 import {
   Container,
   Title,
-  MatchList
+  MatchList,
+  Footer
 } from './style';
 import NextMatch from './NextMatch';
 import { nextMatches } from '../../../store/ducks/schedule/selects';
@@ -22,6 +23,7 @@ export default function NextMatches() {
           )
         }
       </MatchList>
+      <Footer></Footer>
     </Container>
   );
 }

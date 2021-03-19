@@ -9,6 +9,7 @@ export const Container = styled.div`
   width: 100%;
   flex-shrink: 2;
   background-color: ${Colors.secondary};
+  border-radius: 10px;
 `;
 
 export const Title = styled.h1`
@@ -19,12 +20,16 @@ export const Title = styled.h1`
   margin: 0px;
   padding: 25px 0px;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
-  border-bottom-left-radius: 20px;
+  border-radius: 10px;
+`;
+
+export const Footer = styled.div`
+  height: 10px;
 `;
 
 export const MatchList = styled.div`
   box-sizing: border-box;
-  height: calc(100% - 82px);
+  height: calc(100% - 92px);
   padding: 30px 44px 40px;
   overflow: auto;
 
@@ -34,10 +39,12 @@ export const MatchList = styled.div`
 
   ::-webkit-scrollbar-track {
     background: ${Colors.secondaryDark};
+    border-radius: 10px;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: ${Colors.primary}; 
+    background: ${Colors.primary};
+    border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
