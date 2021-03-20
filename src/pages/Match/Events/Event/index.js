@@ -5,6 +5,7 @@ import { Container } from './styles';
 export default function Event() {
   return (
     <Container>
+      xd
     </Container>
   )
 }

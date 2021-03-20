@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 import Event from './Event';
-import { Container } from './styles';
+import {
+  Container,
+  Toast
+} from './styles';
 
 export default function Events() {
   const events = [
@@ -42,13 +47,20 @@ export default function Events() {
     }
   ];
 
+  useEffect(() => {
+    if (events.length > 0)
+      toast(
+        <Container>
+          {
+            events.map(event => (
+              <Event data={event} />
+            ))
+          }
+        </Container>
+      )
+  });
+
   return (
-    <Container>
-      {
-        events.map(event => (
-          <Event data={event} />
-        ))
-      }
-    </Container>
+    <Toast />
   )
 }

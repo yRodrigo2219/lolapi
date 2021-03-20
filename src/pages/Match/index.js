@@ -10,6 +10,7 @@ import Team from './Team';
 import { loadRequest } from '../../store/ducks/matchDetails/actions';
 import { selectIsMatchActive } from '../../store/ducks/matchDetails/selects';
 import Menu from './Menu';
+import Events from './Events';
 
 export default function Match() {
   const { id } = useParams();
@@ -24,10 +25,14 @@ export default function Match() {
     return <Loader />;
 
   return (
-    <Container>
-      <Team />
-      <Menu />
-      <Team flipped />
-    </Container>
+    <>
+      <Events />
+      <Container>
+        <Team />
+        <Menu />
+        <Team flipped />
+      </Container>
+    </>
+
   );
 }
