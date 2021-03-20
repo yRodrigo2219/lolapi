@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import Event from './Event';
+import Event, { EVENTS } from './Event';
 import {
   Container,
   Toast
@@ -11,7 +11,7 @@ import {
 export default function Events() {
   const events = [
     {
-      type: 'kill',
+      type: EVENTS.KILL,
       data: {
         side: 'blue',
         killerId: 1,
@@ -19,28 +19,28 @@ export default function Events() {
       }
     },
     {
-      type: 'structure',
+      type: EVENTS.STRUCTURE,
       data: {
         side: 'blue',
         structure: 'tower'
       }
     },
     {
-      type: 'dragon',
+      type: EVENTS.DRAGON,
       data: {
         side: 'blue',
         monster: 'mountain'
       }
     },
     {
-      type: 'monster',
+      type: EVENTS.MONSTER,
       data: {
         side: 'blue',
         monster: 'baron'
       }
     },
     {
-      type: 'game',
+      type: EVENTS.GAME,
       data: {
         status: 'paused'
       }
@@ -61,6 +61,11 @@ export default function Events() {
   });
 
   return (
-    <Toast />
+    <Toast
+      position="top-center"
+      autoClose={500000}
+      closeOnClick={false}
+      pauseOnFocusLoss={false}
+    />
   )
 }

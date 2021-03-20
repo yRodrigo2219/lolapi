@@ -2,10 +2,25 @@ import React from 'react';
 
 import { Container } from './styles';
 
-export default function Event() {
+export const EVENTS = Object.freeze({
+  KILL: 'kill',
+  STRUCTURE: 'structure',
+  DRAGON: 'dragon',
+  MONSTER: 'monster',
+  GAME: 'game',
+});
+
+export default function Event({ data }) {
   return (
     <Container>
-      xd
+      <RenderEvent data={data} />
     </Container>
   )
+}
+
+function RenderEvent({ data }) {
+  switch (data.type) {
+    default:
+      return (data.type + ' event!');
+  }
 }
