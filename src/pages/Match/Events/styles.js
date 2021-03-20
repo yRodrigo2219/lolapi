@@ -10,10 +10,11 @@ export const Container = styled.div`
   font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-weight: 600;
   font-size: 24px;
-  line-height: 32px;
 `;
 
 export const Toast = styled(ToastContainer)`
+  width: 400px;
+
   .Toastify__close-button {
     color: ${Colors.primary};
   }
