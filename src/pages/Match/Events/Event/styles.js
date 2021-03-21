@@ -26,3 +26,45 @@ export const ActorContainer = styled.span`
     border-radius: 50%;
   }
 `;
+
+export const TeamContainer = styled.span`
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 64px;
+    width: 64px;
+    border: 4px solid ${({ side }) => (
+    side === 'blue' ?
+      Colors.blueSide :
+      Colors.redSide
+  )};
+    border-radius: 50%;
+    background-color: ${Colors.primaryDark};
+  }
+
+  span {
+    font-size: 24px;
+    color: ${Colors.primary};
+  }
+`;
+
+export const ActedContainer = styled.span`
+  display: flex;
+  align-items: center;
+
+  img {
+    height: 64px;
+    width: 64px;
+    border: 4px solid ${({ side }) => (
+    side === 'blue' ?
+      Colors.blueSide :
+      Colors.redSide
+  )};
+    border-radius: 50%;
+  }
+
+  span {
+    font-size: 20px;
+  }
+`;

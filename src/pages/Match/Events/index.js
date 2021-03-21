@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import Event, { EVENTS } from './Event';
+import Event, { EVENTS, EVENT } from './Event';
 import {
   Container,
   Toast
@@ -22,7 +22,7 @@ export default function Events() {
       type: EVENTS.STRUCTURE,
       data: {
         side: 'blue',
-        structure: 'tower'
+        structure: EVENT.STRUCTURE.TOWER
       }
     },
     {

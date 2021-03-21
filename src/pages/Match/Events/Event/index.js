@@ -3,7 +3,9 @@ import React from 'react';
 import EventSVG, { ACTION_TYPE } from '../../../../assets/svgs/events';
 import {
   Container,
-  ActorContainer
+  ActorContainer,
+  TeamContainer,
+  ActedContainer,
 } from './styles';
 
 export const EVENTS = Object.freeze({
@@ -46,12 +48,15 @@ function RenderEvent({ data }) {
   switch (data.type) {
     case EVENTS.KILL:
       return <RenderKillEvent data={data.data} />
+    case EVENTS.STRUCTURE:
+      return <RenderStructureEvent data={data.data} />
     default:
       return (data.type + ' event!');
   }
 }
 
 const chmpImg = 'https://am-a.akamaihd.net/image?resize=64:&f=https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/Gnar.png';
+const teamImg = 'https://am-a.akamaihd.net/image?resize=64:&f=http://static.lolesports.com/teams/1600193815727_SuperMassiveEsportsSUP-01-FullonDark.png';
 
 function RenderKillEvent({ data }) {
   const side = data.side;
@@ -78,10 +83,30 @@ function RenderStructureEvent({ data }) {
   const side = data.side;
   const againstSide = side === 'blue' ? 'red' : 'blue';
 
+  let imgSrc = '';
+  let message = '';
+
+  switch (data.structure) {
+    case EVENT.STRUCTURE.INHIB:
+      imgSrc = '../imgs/structures/inhib.png';
+      message = 'has destroyed an Inhibitor';
+      break;
+    case EVENT.STRUCTURE.TOWER:
+    default:
+      imgSrc = '../imgs/structures/tower.png';
+      message = 'has destroyed a Tower';
+  }
 
   return (
     <Container>
-
+      <TeamContainer side={side}>
+        <img src={teamImg} alt='' />
+        <span>SUP</span>
+      </TeamContainer>
+      <ActedContainer>
+        <span>{message}</span>
+        <img src={imgSrc} alt='' />
+      </ActedContainer>
     </Container>
   )
 }

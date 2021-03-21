@@ -13,7 +13,8 @@ export const Container = styled.div`
 `;
 
 export const Toast = styled(ToastContainer)`
-  width: 400px;
+  min-width: 400px;
+  width: inherit;
 
   .Toastify__close-button {
     color: ${Colors.primary};
