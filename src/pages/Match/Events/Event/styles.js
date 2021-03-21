@@ -6,6 +6,12 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-bottom: 8px;
+
+  > div {
+    display: flex;
+    align-items: center;
+  }
 
   img {
     margin: 0px 2px;
@@ -20,7 +26,6 @@ export const ActorContainer = styled.span`
   display: flex;
   align-items: center;
   color: ${Colors.primary};
-  font-size: 16px;
 
   img {
     width: 64px;
@@ -37,7 +42,7 @@ export const ActorContainer = styled.span`
 export const TeamContainer = styled.span`
   display: flex;
   align-items: center;
-  margin-right: 4px;
+  margin-right: 8px;
 
   img {
     height: 64px;
@@ -52,7 +57,6 @@ export const TeamContainer = styled.span`
   }
 
   span {
-    font-size: 24px;
     color: ${Colors.primary};
   }
 `;

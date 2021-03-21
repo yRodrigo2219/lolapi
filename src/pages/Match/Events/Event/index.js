@@ -51,7 +51,7 @@ function RenderEvent({ data }) {
     case EVENTS.STRUCTURE:
       return <RenderStructureEvent data={data.data} />
     default:
-      return (data.type + ' event!');
+      return ('');
   }
 }
 
@@ -64,17 +64,19 @@ function RenderKillEvent({ data }) {
 
   return (
     <Container>
-      <ActorContainer side={side}>
-        <img src={chmpImg} alt='' />
-        <span>DP fabFabulous</span>
-      </ActorContainer>
+      <div>
+        <ActorContainer side={side}>
+          <img src={chmpImg} alt='' />
+          <span>DP fabFabulous</span>
+        </ActorContainer>
 
-      <EventSVG stat={ACTION_TYPE.KILLED} />
+        <EventSVG stat={ACTION_TYPE.KILLED} />
 
-      <ActorContainer side={againstSide}>
-        <span>DP fabFabulous</span>
-        <img src={chmpImg} alt='' />
-      </ActorContainer>
+        <ActorContainer side={againstSide}>
+          <span>DP fabFabulous</span>
+          <img src={chmpImg} alt='' />
+        </ActorContainer>
+      </div>
     </Container>
   )
 }
@@ -99,14 +101,16 @@ function RenderStructureEvent({ data }) {
 
   return (
     <Container>
-      <TeamContainer side={side}>
-        <img src={teamImg} alt='' />
-        <span>SUP</span>
-      </TeamContainer>
-      <ActedContainer side={againstSide}>
-        <span>{message}</span>
-        <img src={imgSrc} alt='' />
-      </ActedContainer>
+      <div>
+        <TeamContainer side={side}>
+          <img src={teamImg} alt='' />
+          <span>SUP</span>
+        </TeamContainer>
+        <ActedContainer side={againstSide}>
+          <span>{message}</span>
+          <img src={imgSrc} alt='' />
+        </ActedContainer>
+      </div>
     </Container>
   )
 }

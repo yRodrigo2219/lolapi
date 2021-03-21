@@ -10,6 +10,7 @@ export const Container = styled.div`
   font-family: 'Fira Sans Extra Condensed', sans-serif;
   font-weight: 600;
   font-size: 24px;
+  white-space: nowrap;
 `;
 
 export const Toast = styled(ToastContainer)`
