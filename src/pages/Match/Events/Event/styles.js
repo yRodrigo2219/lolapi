@@ -6,18 +6,25 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  img {
+    margin: 0px 2px;
+  }
+
+  svg {
+    margin: 0px 4px;
+  }
 `;
 
 export const ActorContainer = styled.span`
   display: flex;
-  flex-direction: column;
   align-items: center;
   color: ${Colors.primary};
   font-size: 16px;
 
   img {
-    width: 42px;
-    height: 42px;
+    width: 64px;
+    height: 64px;
     border: 4px solid ${({ side }) => (
     side === 'blue' ?
       Colors.blueSide :
@@ -30,6 +37,7 @@ export const ActorContainer = styled.span`
 export const TeamContainer = styled.span`
   display: flex;
   align-items: center;
+  margin-right: 4px;
 
   img {
     height: 64px;

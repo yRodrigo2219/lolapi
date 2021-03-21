@@ -72,8 +72,8 @@ function RenderKillEvent({ data }) {
       <EventSVG stat={ACTION_TYPE.KILLED} />
 
       <ActorContainer side={againstSide}>
-        <img src={chmpImg} alt='' />
         <span>DP fabFabulous</span>
+        <img src={chmpImg} alt='' />
       </ActorContainer>
     </Container>
   )
@@ -103,7 +103,7 @@ function RenderStructureEvent({ data }) {
         <img src={teamImg} alt='' />
         <span>SUP</span>
       </TeamContainer>
-      <ActedContainer>
+      <ActedContainer side={againstSide}>
         <span>{message}</span>
         <img src={imgSrc} alt='' />
       </ActedContainer>
