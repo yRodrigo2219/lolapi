@@ -14,6 +14,28 @@ export const EVENTS = Object.freeze({
   GAME: 'game',
 });
 
+export const EVENT = Object.freeze({
+  STRUCTURE: {
+    TOWER: 'tower',
+    INHIB: 'inhibitor',
+  },
+  DRAGON: {
+    MOUNTAIN: 'mountain',
+    INFERNAL: 'infernal',
+    WATER: 'water',
+    CLOUD: 'cloud',
+    ELDER: 'elder',
+  },
+  MONSTER: {
+    BARON: 'baron',
+    HERALD: 'herald',
+  },
+  GAME: {
+    PAUSED: 'paused',
+    FINISHED: 'finished',
+  },
+});
+
 export default function Event({ data }) {
   return (
     <RenderEvent data={data} />
@@ -48,6 +70,18 @@ function RenderKillEvent({ data }) {
         <img src={chmpImg} alt='' />
         <span>DP fabFabulous</span>
       </ActorContainer>
+    </Container>
+  )
+}
+
+function RenderStructureEvent({ data }) {
+  const side = data.side;
+  const againstSide = side === 'blue' ? 'red' : 'blue';
+
+
+  return (
+    <Container>
+
     </Container>
   )
 }
