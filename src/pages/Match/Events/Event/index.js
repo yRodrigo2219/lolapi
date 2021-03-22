@@ -35,6 +35,7 @@ export const EVENT = Object.freeze({
   GAME: {
     PAUSED: 'paused',
     FINISHED: 'finished',
+    RESUME: 'resume'
   },
 });
 
@@ -54,6 +55,8 @@ function RenderEvent({ data }) {
       return <RenderDragonEvent data={data.data} />
     case EVENTS.MONSTER:
       return <RenderMonsterEvent data={data.data} />
+    case EVENTS.GAME:
+      return <RenderGameEvent data={data.data} />
     default:
       return ('');
   }
@@ -190,6 +193,28 @@ function RenderMonsterEvent({ data }) {
           <img src={imgSrc} alt='' />
         </ActedContainer>
       </div>
+    </Container>
+  )
+}
+
+function RenderGameEvent({ data }) {
+  let message = '';
+
+  switch (data.status) {
+    case EVENT.GAME.FINISHED:
+      message = 'Game is Finished!';
+      break;
+    case EVENT.GAME.PAUSED:
+      message = 'Game Paused!';
+      break;
+    case EVENT.GAME.RESUME:
+    default:
+      message = 'Game Resumed!';
+  }
+
+  return (
+    <Container>
+      {message}
     </Container>
   )
 }
