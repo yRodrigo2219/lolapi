@@ -98,12 +98,12 @@ function RenderStructureEvent({ data }) {
   switch (data.structure) {
     case EVENT.STRUCTURE.INHIB:
       imgSrc = '../imgs/structures/inhib.png';
-      message = 'has destroyed an Inhibitor';
+      message = 'destroyed an Inhibitor';
       break;
     case EVENT.STRUCTURE.TOWER:
     default:
       imgSrc = '../imgs/structures/tower.png';
-      message = 'has destroyed a Tower';
+      message = 'destroyed a Tower';
   }
 
   return (
@@ -127,7 +127,7 @@ function RenderDragonEvent({ data }) {
   const againstSide = 'purple';
 
   let imgSrc = '';
-  const message = 'has slayed a Dragon';
+  const message = 'slayed Dragon';
 
   switch (data.monster) {
     case EVENT.DRAGON.ELDER:
@@ -173,12 +173,12 @@ function RenderMonsterEvent({ data }) {
   switch (data.monster) {
     case EVENT.MONSTER.BARON:
       imgSrc = '../imgs/monsters/baron.png';
-      message = 'has slayed Baron';
+      message = 'slayed Baron';
       break;
     case EVENT.MONSTER.HERALD:
     default:
       imgSrc = '../imgs/monsters/herald.png';
-      message = 'has slayed Herald';
+      message = 'slayed Herald';
   }
 
   return (
