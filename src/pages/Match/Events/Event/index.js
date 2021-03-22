@@ -50,6 +50,8 @@ function RenderEvent({ data }) {
       return <RenderKillEvent data={data.data} />
     case EVENTS.STRUCTURE:
       return <RenderStructureEvent data={data.data} />
+    case EVENTS.DRAGON:
+      return <RenderDragonEvent data={data.data} />
     default:
       return ('');
   }
@@ -97,6 +99,47 @@ function RenderStructureEvent({ data }) {
     default:
       imgSrc = '../imgs/structures/tower.png';
       message = 'has destroyed a Tower';
+  }
+
+  return (
+    <Container>
+      <div>
+        <TeamContainer side={side}>
+          <img src={teamImg} alt='' />
+          <span>SUP</span>
+        </TeamContainer>
+        <ActedContainer side={againstSide}>
+          <span>{message}</span>
+          <img src={imgSrc} alt='' />
+        </ActedContainer>
+      </div>
+    </Container>
+  )
+}
+
+function RenderDragonEvent({ data }) {
+  const side = data.side;
+  const againstSide = 'purple';
+
+  let imgSrc = '';
+  const message = 'has slayed a Dragon';
+
+  switch (data.monster) {
+    case EVENT.DRAGON.ELDER:
+      imgSrc = '../imgs/monsters/elder.png';
+      break;
+    case EVENT.DRAGON.INFERNAL:
+      imgSrc = '../imgs/monsters/infernal.png';
+      break;
+    case EVENT.DRAGON.MOUNTAIN:
+      imgSrc = '../imgs/monsters/mountain.png';
+      break;
+    case EVENT.DRAGON.WATER:
+      imgSrc = '../imgs/monsters/ocean.png';
+      break;
+    case EVENT.DRAGON.CLOUD:
+    default:
+      imgSrc = '../imgs/monsters/cloud.png';
   }
 
   return (

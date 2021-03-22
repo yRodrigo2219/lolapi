@@ -71,7 +71,9 @@ export const ActedContainer = styled.span`
     border: 4px solid ${({ side }) => (
     side === 'blue' ?
       Colors.blueSide :
-      Colors.redSide
+      (side === 'purple' ?
+        Colors.primaryDark :
+        Colors.redSide)
   )};
     border-radius: 50%;
   }
