@@ -52,6 +52,8 @@ function RenderEvent({ data }) {
       return <RenderStructureEvent data={data.data} />
     case EVENTS.DRAGON:
       return <RenderDragonEvent data={data.data} />
+    case EVENTS.MONSTER:
+      return <RenderMonsterEvent data={data.data} />
     default:
       return ('');
   }
@@ -158,3 +160,36 @@ function RenderDragonEvent({ data }) {
   )
 }
 
+function RenderMonsterEvent({ data }) {
+  const side = data.side;
+  const againstSide = 'purple';
+
+  let imgSrc = '';
+  let message = '';
+
+  switch (data.monster) {
+    case EVENT.MONSTER.BARON:
+      imgSrc = '../imgs/monsters/baron.png';
+      message = 'has slayed Baron';
+      break;
+    case EVENT.MONSTER.HERALD:
+    default:
+      imgSrc = '../imgs/monsters/herald.png';
+      message = 'has slayed Herald';
+  }
+
+  return (
+    <Container>
+      <div>
+        <TeamContainer side={side}>
+          <img src={teamImg} alt='' />
+          <span>SUP</span>
+        </TeamContainer>
+        <ActedContainer side={againstSide}>
+          <span>{message}</span>
+          <img src={imgSrc} alt='' />
+        </ActedContainer>
+      </div>
+    </Container>
+  )
+}
