@@ -8,6 +8,7 @@ import timeTracker from './timeTracker';
 import pages from './pages';
 import riotInfo from './riotInfo';
 import gameDetails from './gameDetails';
+import events from './events';
 
 const rootReducer = combineReducers({
   leagues,
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   pages,
   riotInfo,
   gameDetails,
+  events,
 });
 
 export default rootReducer;

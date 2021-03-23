@@ -1,43 +1,13 @@
 import React from 'react';
 
 import EventSVG, { ACTION_TYPE } from '../../../../assets/svgs/events';
+import { EVENTS, EVENT } from '../../../../store/ducks/events/types';
 import {
   Container,
   ActorContainer,
   TeamContainer,
   ActedContainer,
 } from './styles';
-
-export const EVENTS = Object.freeze({
-  KILL: 'kill',
-  STRUCTURE: 'structure',
-  DRAGON: 'dragon',
-  MONSTER: 'monster',
-  GAME: 'game',
-});
-
-export const EVENT = Object.freeze({
-  STRUCTURE: {
-    TOWER: 'tower',
-    INHIB: 'inhibitor',
-  },
-  DRAGON: {
-    MOUNTAIN: 'mountain',
-    INFERNAL: 'infernal',
-    WATER: 'water',
-    CLOUD: 'cloud',
-    ELDER: 'elder',
-  },
-  MONSTER: {
-    BARON: 'baron',
-    HERALD: 'herald',
-  },
-  GAME: {
-    PAUSED: 'paused',
-    FINISHED: 'finished',
-    RESUME: 'resume'
-  },
-});
 
 export default function Event({ data }) {
   return (
