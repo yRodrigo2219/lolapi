@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import Event, { EVENTS, EVENT } from './Event';
+import { EVENTS, EVENT } from '../../../store/ducks/events/types';
+import Event from './Event';
 import {
   Container,
   Toast
