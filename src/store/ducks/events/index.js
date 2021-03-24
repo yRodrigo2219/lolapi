@@ -6,7 +6,22 @@ const INITIAL_STATE = {
   events: [],
 };
 
-function getStructuresDestroyed(events, team, pastTeam, side) {
+function getSlayedDragons(events, dragons, pastDragons, side) {
+  const newDragons = dragons.filter(dragon => !pastDragons.includes(dragon));
+
+  // One Dragons Slayed Event is triggered for each dragons slayed
+  // in the meantime
+  for (let i = 0; i < newDragons.length; i++)
+    events.push({
+      type: EVENTS.DRAGON,
+      data: {
+        side: side,
+        monster: newDragons[i]
+      }
+    });
+}
+
+function getDestroyedStructures(events, team, pastTeam, side) {
   const pastTowers = pastTeam.towers;
   const towers = team.towers;
   // One Tower Destroyed Event is triggered for each tower destroyed
@@ -52,9 +67,10 @@ export default function reducer(state = INITIAL_STATE, action) {
 
           // TODOS:
           // Kill Event
-          getStructuresDestroyed(events, frame.blueTeam, pastFrame.blueTeam, 'blue');
-          getStructuresDestroyed(events, frame.redTeam, pastFrame.redTeam, 'red');
-          // Dragon Events
+          getDestroyedStructures(events, frame.blueTeam, pastFrame.blueTeam, 'blue');
+          getDestroyedStructures(events, frame.redTeam, pastFrame.redTeam, 'red');
+          getSlayedDragons(events, frame.blueTeam.dragons, pastFrame.blueTeam.dragons, 'blue');
+          getSlayedDragons(events, frame.redTeam.dragons, pastFrame.redTeam.dragons, 'red');
           // Epic Monster Events
           // Game Status Events
 

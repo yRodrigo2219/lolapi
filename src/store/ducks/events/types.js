@@ -14,7 +14,7 @@ export const EVENT = Object.freeze({
   DRAGON: {
     MOUNTAIN: 'mountain',
     INFERNAL: 'infernal',
-    WATER: 'water',
+    WATER: 'ocean',
     CLOUD: 'cloud',
     ELDER: 'elder',
   },
