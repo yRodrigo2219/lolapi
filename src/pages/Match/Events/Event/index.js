@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import EventSVG, { ACTION_TYPE } from '../../../../assets/svgs/events';
 import { EVENTS, EVENT } from '../../../../store/ducks/events/types';
+import { selectTeamById } from '../../../../store/ducks/matchDetails/selects';
 import {
   Container,
   ActorContainer,
@@ -33,7 +35,6 @@ function RenderEvent({ data }) {
 }
 
 const chmpImg = 'https://am-a.akamaihd.net/image?resize=64:&f=https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/Gnar.png';
-const teamImg = 'https://am-a.akamaihd.net/image?resize=64:&f=http://static.lolesports.com/teams/1600193815727_SuperMassiveEsportsSUP-01-FullonDark.png';
 
 function RenderKillEvent({ data }) {
   const side = data.side;
@@ -59,6 +60,7 @@ function RenderKillEvent({ data }) {
 }
 
 function RenderStructureEvent({ data }) {
+  const team = useSelector(selectTeamById(data.teamId));
   const side = data.side;
   const againstSide = side === 'blue' ? 'red' : 'blue';
 
@@ -80,8 +82,8 @@ function RenderStructureEvent({ data }) {
     <Container>
       <div>
         <TeamContainer side={side}>
-          <img src={teamImg} alt='' />
-          <span>SUP</span>
+          <img src={team.image} alt='' />
+          <span>{team.code}</span>
         </TeamContainer>
         <ActedContainer side={againstSide}>
           <span>{message}</span>
@@ -93,6 +95,7 @@ function RenderStructureEvent({ data }) {
 }
 
 function RenderDragonEvent({ data }) {
+  const team = useSelector(selectTeamById(data.teamId));
   const side = data.side;
   const againstSide = 'purple';
 
@@ -121,8 +124,8 @@ function RenderDragonEvent({ data }) {
     <Container>
       <div>
         <TeamContainer side={side}>
-          <img src={teamImg} alt='' />
-          <span>SUP</span>
+          <img src={team.image} alt='' />
+          <span>{team.code}</span>
         </TeamContainer>
         <ActedContainer side={againstSide}>
           <span>{message}</span>
@@ -134,6 +137,7 @@ function RenderDragonEvent({ data }) {
 }
 
 function RenderMonsterEvent({ data }) {
+  const team = useSelector(selectTeamById(data.teamId));
   const side = data.side;
   const againstSide = 'purple';
 
@@ -155,8 +159,8 @@ function RenderMonsterEvent({ data }) {
     <Container>
       <div>
         <TeamContainer side={side}>
-          <img src={teamImg} alt='' />
-          <span>SUP</span>
+          <img src={team.image} alt='' />
+          <span>{team.code}</span>
         </TeamContainer>
         <ActedContainer side={againstSide}>
           <span>{message}</span>

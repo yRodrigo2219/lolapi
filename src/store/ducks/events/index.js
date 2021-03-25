@@ -6,20 +6,21 @@ const INITIAL_STATE = {
   events: [],
 };
 
-function getSlayedMonsters(events, baron, pastBaron, side) {
+function getSlayedMonsters(events, baron, pastBaron, side, teamId) {
   // One Monster Slayed Event is triggered for each monster slayed
   // in the meantime
   for (let i = 0; i < (baron - pastBaron); i++)
     events.push({
       type: EVENTS.MONSTER,
       data: {
-        side: side,
+        teamId,
+        side,
         monster: EVENT.MONSTER.BARON
       }
     });
 }
 
-function getSlayedDragons(events, dragons, pastDragons, side) {
+function getSlayedDragons(events, dragons, pastDragons, side, teamId) {
   const newDragons = dragons.filter(dragon => !pastDragons.includes(dragon));
 
   // One Dragons Slayed Event is triggered for each dragons slayed
@@ -28,13 +29,14 @@ function getSlayedDragons(events, dragons, pastDragons, side) {
     events.push({
       type: EVENTS.DRAGON,
       data: {
-        side: side,
+        teamId,
+        side,
         monster: newDragons[i]
       }
     });
 }
 
-function getDestroyedStructures(events, team, pastTeam, side) {
+function getDestroyedStructures(events, team, pastTeam, side, teamId) {
   const pastTowers = pastTeam.towers;
   const towers = team.towers;
   // One Tower Destroyed Event is triggered for each tower destroyed
@@ -43,7 +45,8 @@ function getDestroyedStructures(events, team, pastTeam, side) {
     events.push({
       type: EVENTS.STRUCTURE,
       data: {
-        side: side,
+        teamId,
+        side,
         structure: EVENT.STRUCTURE.TOWER
       }
     });
@@ -56,7 +59,8 @@ function getDestroyedStructures(events, team, pastTeam, side) {
     events.push({
       type: EVENTS.STRUCTURE,
       data: {
-        side: side,
+        teamId,
+        side,
         structure: EVENT.STRUCTURE.INHIB
       }
     });
@@ -76,17 +80,19 @@ export default function reducer(state = INITIAL_STATE, action) {
 
       if (state.pastFrame !== null) {
         let pastFrame = state.pastFrame;
+        const blueTeamId = metaData.blueTeamMetadata.esportsTeamId;
+        const redTeamId = metaData.redTeamMetadata.esportsTeamId;
         dataFrames.forEach(frame => {
 
           // TODOS:
           // Kill Event
-          getDestroyedStructures(events, frame.blueTeam, pastFrame.blueTeam, 'blue');
-          getSlayedDragons(events, frame.blueTeam.dragons, pastFrame.blueTeam.dragons, 'blue');
-          getSlayedMonsters(events, frame.blueTeam.barons, pastFrame.blueTeam.barons, 'blue');
+          getDestroyedStructures(events, frame.blueTeam, pastFrame.blueTeam, 'blue', blueTeamId);
+          getSlayedDragons(events, frame.blueTeam.dragons, pastFrame.blueTeam.dragons, 'blue', blueTeamId);
+          getSlayedMonsters(events, frame.blueTeam.barons, pastFrame.blueTeam.barons, 'blue', blueTeamId);
 
-          getDestroyedStructures(events, frame.redTeam, pastFrame.redTeam, 'red');
-          getSlayedDragons(events, frame.redTeam.dragons, pastFrame.redTeam.dragons, 'red');
-          getSlayedMonsters(events, frame.redTeam.barons, pastFrame.redTeam.barons, 'red');
+          getDestroyedStructures(events, frame.redTeam, pastFrame.redTeam, 'red', redTeamId);
+          getSlayedDragons(events, frame.redTeam.dragons, pastFrame.redTeam.dragons, 'red', redTeamId);
+          getSlayedMonsters(events, frame.redTeam.barons, pastFrame.redTeam.barons, 'red', redTeamId);
           // Game Status Events
 
           pastFrame = frame;
