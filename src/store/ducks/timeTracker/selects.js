@@ -5,3 +5,7 @@ export const selectNow = state => (
 export const selectDelay = state => (
   state.timeTracker.delay
 )
+
+export const selectDidDelayChange = state => (
+  state.timeTracker.didDelayChange
+)

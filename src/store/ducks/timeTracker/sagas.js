@@ -4,7 +4,7 @@ import { getTime } from '../../../services/clock';
 import { loadFailure, loadSuccess, updateTime, loadRequest } from './actions';
 import { updateGameRequest } from '../gameInfo/actions';
 import { selectGameToUpdate } from '../gameInfo/selects';
-import { selectNow } from './selects';
+import { selectNow, selectDidDelayChange } from './selects';
 import { TIME } from './types';
 import { GAME } from '../gameInfo/types';
 
@@ -46,9 +46,18 @@ function* update() {
   yield put(updateTime());
 }
 
+function* onDelayUpdate() {
+  const didDelayChange = yield select(selectDidDelayChange);
+  console.log(didDelayChange)
+
+  if (didDelayChange) // if delay has changed
+    yield put(updateTime());
+}
+
 export default function* timeTracker() {
   yield takeLatest(TIME.REQUEST, load);
   yield takeLatest(GAME.INIT_SUCCESS, update);
   yield takeLatest(TIME.UPDATE, update);
   yield takeLatest(TIME.FAILURE, onError);
+  yield takeLatest(TIME.SET_DELAY, onDelayUpdate);
 }

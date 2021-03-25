@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   unix: 0,
   now: 0,
   initialUnix: 0,
-  delay: 2,
+  delay: 6,
+  didDelayChange: false,
   loading: false,
   error: false
 };
@@ -54,6 +55,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         delay,
+        didDelayChange: (delay !== state.delay),
       }
     default:
       return state;
