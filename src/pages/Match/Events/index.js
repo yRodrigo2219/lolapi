@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import { EVENTS, EVENT } from '../../../store/ducks/events/types';
+import { selectEvents } from '../../../store/ducks/events/selects';
 import Event from './Event';
 import {
   Container,
@@ -10,43 +11,7 @@ import {
 } from './styles';
 
 export default function Events() {
-  const events = [
-    {
-      type: EVENTS.KILL,
-      data: {
-        side: 'blue',
-        killerId: 1,
-        killedId: 6
-      }
-    },
-    {
-      type: EVENTS.STRUCTURE,
-      data: {
-        side: 'blue',
-        structure: EVENT.STRUCTURE.TOWER
-      }
-    },
-    {
-      type: EVENTS.DRAGON,
-      data: {
-        side: 'blue',
-        monster: 'mountain'
-      }
-    },
-    {
-      type: EVENTS.MONSTER,
-      data: {
-        side: 'blue',
-        monster: 'baron'
-      }
-    },
-    {
-      type: EVENTS.GAME,
-      data: {
-        status: 'paused'
-      }
-    }
-  ];
+  const events = useSelector(selectEvents);
 
   useEffect(() => {
     if (events.length > 0)
@@ -59,12 +24,12 @@ export default function Events() {
           }
         </Container>
       )
-  });
+  }, [events]);
 
   return (
     <Toast
       position="top-center"
-      autoClose={7500}
+      autoClose={75000}
       closeOnClick={false}
       pauseOnFocusLoss={false}
     />
