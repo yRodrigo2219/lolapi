@@ -2,6 +2,11 @@ export const selectActiveGame = state => (
   state.gameInfo.activeGame
 )
 
+export const selectGameToUpdate = state => (
+  state.gameInfo.gameState === 'finished' ?
+    '' : state.gameInfo.activeGame
+)
+
 export const selectIsGameLoading = state => (
   state.gameInfo.loading
 )
