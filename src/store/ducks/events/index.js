@@ -6,6 +6,23 @@ const INITIAL_STATE = {
   events: [],
 };
 
+function getGameState(events, gameState, pastGameState) {
+  if (gameState !== pastGameState) { // if gameState has changed
+    const gs = (gameState === 'in_game' ?
+      EVENT.GAME.RESUME :
+      gameState === 'finished' ?
+        EVENT.GAME.FINISHED :
+        EVENT.GAME.PAUSED);
+
+    events.push({
+      type: EVENTS.GAME,
+      data: {
+        status: gs,
+      }
+    })
+  }
+}
+
 function getSlayedMonsters(events, baron, pastBaron, side, teamId) {
   // One Monster Slayed Event is triggered for each monster slayed
   // in the meantime
@@ -93,7 +110,7 @@ export default function reducer(state = INITIAL_STATE, action) {
           getDestroyedStructures(events, frame.redTeam, pastFrame.redTeam, 'red', redTeamId);
           getSlayedDragons(events, frame.redTeam.dragons, pastFrame.redTeam.dragons, 'red', redTeamId);
           getSlayedMonsters(events, frame.redTeam.barons, pastFrame.redTeam.barons, 'red', redTeamId);
-          // Game Status Events
+          getGameState(events, frame.gameState, pastFrame.gameState);
 
           pastFrame = frame;
         });
