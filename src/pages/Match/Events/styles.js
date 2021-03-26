@@ -23,6 +23,20 @@ export const Toast = styled(ToastContainer)`
 
   .Toastify__toast-body {
     width: 100%;
+    max-height: inherit;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    > div {
+      padding-bottom: 20px;
+    }
+
+    // Hiding ScrollBars
+    -ms-overflow-style: none;  // IE and Edge
+    scrollbar-width: none;  // Firefox
+    ::-webkit-scrollbar {
+      display: none; // Chrome, Safari, Opera
+    }
   }
 
   .Toastify__progress-bar {
