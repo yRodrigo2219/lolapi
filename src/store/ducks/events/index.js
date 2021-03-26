@@ -83,7 +83,7 @@ function getDestroyedStructures(events, team, pastTeam, side, teamId) {
     });
 }
 
-function getKillEvents(events, frame, pastFrame) {
+function getKillEvents(events, frame, pastFrame, metadata) {
   const whoKilled = [];
   const whoDied = [];
   const participants =
@@ -112,17 +112,46 @@ function getKillEvents(events, frame, pastFrame) {
   // Assuming that riot doesnt suck and 
   // kills are always equals to deaths
   whoKilled.forEach(id => {
+    const deadId = whoDied.splice(Math.floor(Math.random() * whoDied.length), 1)[0];
+
+    const killerMetadata = findParticipantMetadata(id);
+    const deadMetadata = findParticipantMetadata(deadId);
+    const killer = {
+      champ: killerMetadata.championId,
+      name: killerMetadata.summonerName,
+    };
+    const dead = {
+      champ: deadMetadata.championId,
+      name: deadMetadata.summonerName,
+    };
+
     events.push({
       type: EVENTS.KILL,
       data: {
         side: (id <= 5 ? 'blue' : 'red'),
-        killerId: id,
-        deadId: whoDied.splice(Math.floor(Math.random() * whoDied.length), 1)[0]
+        killer,
+        dead,
       }
     })
   })
 
-  // Auxiliar Function
+  // Auxiliar Functions
+  function findParticipantMetadata(id) {
+    let participant;
+
+    participant = metadata.blueTeamMetadata
+      .participantMetadata.find(participant => (
+        participant.participantId === id
+      ));
+
+    participant = metadata.redTeamMetadata
+      .participantMetadata.find(participant => (
+        participant.participantId === id
+      ));
+
+    return participant;
+  }
+
   function findParticipantInFrame(id, frame) {
     let participant;
 
@@ -144,7 +173,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       return INITIAL_STATE;
     case GAME.UPDATE_SUCCESS:
       // TODO: Check if its updating the correct game
-      const metaData = action.payload.gameMetadata;
+      const metadata = action.payload.gameMetadata;
       const dataFrames = action.payload.frames;
 
       const lastFrame = dataFrames[dataFrames.length - 1];
@@ -152,12 +181,12 @@ export default function reducer(state = INITIAL_STATE, action) {
 
       if (state.pastFrame !== null) {
         let pastFrame = state.pastFrame;
-        const blueTeamId = metaData.blueTeamMetadata.esportsTeamId;
-        const redTeamId = metaData.redTeamMetadata.esportsTeamId;
+        const blueTeamId = metadata.blueTeamMetadata.esportsTeamId;
+        const redTeamId = metadata.redTeamMetadata.esportsTeamId;
         dataFrames.forEach(frame => {
 
           // TODOS:
-          getKillEvents(events, frame, pastFrame);
+          getKillEvents(events, frame, pastFrame, metadata);
 
           getDestroyedStructures(events, frame.blueTeam, pastFrame.blueTeam, 'blue', blueTeamId);
           getSlayedDragons(events, frame.blueTeam.dragons, pastFrame.blueTeam.dragons, 'blue', blueTeamId);
