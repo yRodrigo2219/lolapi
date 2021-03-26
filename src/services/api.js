@@ -53,6 +53,9 @@ export async function getGameStats(gameId, isoDate) {
     }
   });
 
+  if (res.status === 204)
+    throw new Error('Nothing to update');
+
   return res.data;
 }
 
@@ -68,6 +71,9 @@ export async function getChampStats(gameId, isoDate) {
       'startingTime': isoDate
     }
   });
+
+  if (res.status === 204)
+    throw new Error('Nothing to update');
 
   return res.data;
 }

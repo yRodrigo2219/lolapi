@@ -29,7 +29,6 @@ function* loadUpdate({ payload }) {
 
     yield put(updateGameSuccess(response));
   } catch (err) {
-    console.log(err)
     yield put(updateGameFailure());
   }
 }
