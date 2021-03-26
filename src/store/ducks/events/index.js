@@ -83,6 +83,61 @@ function getDestroyedStructures(events, team, pastTeam, side, teamId) {
     });
 }
 
+function getKillEvents(events, frame, pastFrame) {
+  const whoKilled = [];
+  const whoDied = [];
+  const participants =
+    frame.blueTeam.participants.concat(frame.redTeam.participants);
+
+  // Anyone got kills?
+  participants.forEach(participant => {
+    const id = participant.participantId;
+    const gotKills =
+      participant.kills - findParticipantInFrame(id, pastFrame).kills;
+
+    for (let i = 0; i < gotKills; i++)
+      whoKilled.push(id);
+  });
+
+  // Did anyone die?
+  participants.forEach(participant => {
+    const id = participant.participantId;
+    const gotDeaths =
+      participant.deaths - findParticipantInFrame(id, pastFrame).deaths;
+
+    for (let i = 0; i < gotDeaths; i++)
+      whoDied.push(id);
+  })
+
+  // Assuming that riot doesnt suck and 
+  // kills are always equals to deaths
+  whoKilled.forEach(id => {
+    events.push({
+      type: EVENTS.KILL,
+      data: {
+        side: (id <= 5 ? 'blue' : 'red'),
+        killerId: id,
+        deadId: whoDied.splice(Math.floor(Math.random() * whoDied.length), 1)[0]
+      }
+    })
+  })
+
+  // Auxiliar Function
+  function findParticipantInFrame(id, frame) {
+    let participant;
+
+    participant = frame.blueTeam.participant.find(participant => (
+      participant.participantId === id
+    ));
+
+    participant = frame.redTeam.participant.find(participant => (
+      participant.participantId === id
+    ));
+
+    return participant;
+  }
+}
+
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case GAME.INIT_SUCCESS:
@@ -102,7 +157,8 @@ export default function reducer(state = INITIAL_STATE, action) {
         dataFrames.forEach(frame => {
 
           // TODOS:
-          // Kill Event
+          getKillEvents(events, frame, pastFrame);
+
           getDestroyedStructures(events, frame.blueTeam, pastFrame.blueTeam, 'blue', blueTeamId);
           getSlayedDragons(events, frame.blueTeam.dragons, pastFrame.blueTeam.dragons, 'blue', blueTeamId);
           getSlayedMonsters(events, frame.blueTeam.barons, pastFrame.blueTeam.barons, 'blue', blueTeamId);
