@@ -137,33 +137,23 @@ function getKillEvents(events, frame, pastFrame, metadata) {
 
   // Auxiliar Functions
   function findParticipantMetadata(id) {
-    let participant;
+    const participants =
+      metadata.blueTeamMetadata.participantMetadata.concat(
+        metadata.redTeamMetadata.participantMetadata
+      );
 
-    participant = metadata.blueTeamMetadata
-      .participantMetadata.find(participant => (
-        participant.participantId === id
-      ));
-
-    participant = metadata.redTeamMetadata
-      .participantMetadata.find(participant => (
-        participant.participantId === id
-      ));
-
-    return participant;
+    return participants.find(participant => (
+      participant.participantId === id
+    ));
   }
 
   function findParticipantInFrame(id, frame) {
-    let participant;
+    const participants =
+      frame.blueTeam.participants.concat(frame.redTeam.participants);
 
-    participant = frame.blueTeam.participant.find(participant => (
+    return participants.find(participant => (
       participant.participantId === id
     ));
-
-    participant = frame.redTeam.participant.find(participant => (
-      participant.participantId === id
-    ));
-
-    return participant;
   }
 }
 

@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux';
 import EventSVG, { ACTION_TYPE } from '../../../../assets/svgs/events';
 import { EVENTS, EVENT } from '../../../../store/ducks/events/types';
 import { selectTeamById } from '../../../../store/ducks/matchDetails/selects';
+import { selectPatchVersion } from '../../../../store/ducks/riotInfo/selects';
+import { getChampionImage } from '../../../../services/riot';
 import {
   Container,
   ActorContainer,
@@ -34,9 +36,9 @@ function RenderEvent({ data }) {
   }
 }
 
-const chmpImg = 'https://am-a.akamaihd.net/image?resize=64:&f=https://ddragon.leagueoflegends.com/cdn/11.6.1/img/champion/Gnar.png';
-
 function RenderKillEvent({ data }) {
+  const patchVersion = useSelector(selectPatchVersion);
+
   const side = data.side;
   const againstSide = side === 'blue' ? 'red' : 'blue';
 
@@ -44,15 +46,15 @@ function RenderKillEvent({ data }) {
     <Container>
       <div>
         <ActorContainer side={side}>
-          <img src={chmpImg} alt='' />
-          <span>DP fabFabulous</span>
+          <img src={getChampionImage(64, patchVersion, data.killer.champ)} alt='' />
+          <span>{data.killer.name}</span>
         </ActorContainer>
 
         <EventSVG stat={ACTION_TYPE.KILLED} />
 
         <ActorContainer side={againstSide}>
-          <span>DP fabFabulous</span>
-          <img src={chmpImg} alt='' />
+          <span>{data.dead.name}</span>
+          <img src={getChampionImage(64, patchVersion, data.dead.champ)} alt='' />
         </ActorContainer>
       </div>
     </Container>

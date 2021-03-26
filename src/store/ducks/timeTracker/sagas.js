@@ -48,7 +48,6 @@ function* update() {
 
 function* onDelayUpdate() {
   const didDelayChange = yield select(selectDidDelayChange);
-  console.log(didDelayChange)
 
   if (didDelayChange) // if delay has changed
     yield put(updateTime());
