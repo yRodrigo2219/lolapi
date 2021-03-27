@@ -186,17 +186,16 @@ export default function reducer(state = INITIAL_STATE, action) {
         const blueTeamId = metadata.blueTeamMetadata.esportsTeamId;
         const redTeamId = metadata.redTeamMetadata.esportsTeamId;
         dataFrames.forEach(frame => {
-
-          // TODOS:
           getKillEvents(events, frame, pastFrame, metadata);
 
-          getDestroyedStructures(events, frame.blueTeam, pastFrame.blueTeam, 'blue', blueTeamId);
-          getSlayedDragons(events, frame.blueTeam.dragons, pastFrame.blueTeam.dragons, 'blue', blueTeamId);
           getSlayedMonsters(events, frame.blueTeam.barons, pastFrame.blueTeam.barons, 'blue', blueTeamId);
+          getSlayedDragons(events, frame.blueTeam.dragons, pastFrame.blueTeam.dragons, 'blue', blueTeamId);
+          getDestroyedStructures(events, frame.blueTeam, pastFrame.blueTeam, 'blue', blueTeamId);
 
-          getDestroyedStructures(events, frame.redTeam, pastFrame.redTeam, 'red', redTeamId);
-          getSlayedDragons(events, frame.redTeam.dragons, pastFrame.redTeam.dragons, 'red', redTeamId);
           getSlayedMonsters(events, frame.redTeam.barons, pastFrame.redTeam.barons, 'red', redTeamId);
+          getSlayedDragons(events, frame.redTeam.dragons, pastFrame.redTeam.dragons, 'red', redTeamId);
+          getDestroyedStructures(events, frame.redTeam, pastFrame.redTeam, 'red', redTeamId);
+
           getGameState(events, frame.gameState, pastFrame.gameState);
 
           pastFrame = frame;
