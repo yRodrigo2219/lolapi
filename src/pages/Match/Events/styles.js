@@ -26,10 +26,7 @@ export const Toast = styled(ToastContainer)`
     max-height: inherit;
     overflow-y: auto;
     overflow-x: hidden;
-
-    > div {
-      padding-bottom: 20px;
-    }
+    box-sizing: border-box;
 
     // Hiding ScrollBars
     -ms-overflow-style: none;  // IE and Edge
