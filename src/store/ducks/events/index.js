@@ -109,10 +109,22 @@ function getKillEvents(events, frame, pastFrame, metadata) {
       whoDied.push(id);
   })
 
+  if (whoKilled.length !== whoDied.length)
+    throw new Error('Riot sucks!');
+
   // Assuming that riot doesnt suck and 
-  // kills are always equals to deaths
+  // kills are always equals to deaths  
   whoKilled.forEach(id => {
-    const deadId = whoDied.splice(Math.floor(Math.random() * whoDied.length), 1)[0];
+    let deadId = whoDied.splice(Math.floor(Math.random() * whoDied.length), 1)[0];
+
+    // grants that they are in opposite teams
+    while (true) {
+      if ((id <= 5 && deadId > 5) || (id > 5 && deadId <= 5))
+        break;
+
+      whoDied.push(deadId);
+      deadId = whoDied.splice(Math.floor(Math.random() * whoDied.length), 1)[0];
+    }
 
     const killerMetadata = findParticipantMetadata(id);
     const deadMetadata = findParticipantMetadata(deadId);
