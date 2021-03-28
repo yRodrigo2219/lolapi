@@ -46,7 +46,14 @@ export function updateGameFailure() {
 
 export function changeGame(gameId) {
   return {
-    type: GAME.CHANGE_GAME,
+    type: GAME.CHANGE_GAME_REQUEST,
+    payload: gameId,
+  }
+}
+
+export function changeGameSuccess(gameId) {
+  return {
+    type: GAME.CHANGE_GAME_SUCCESS,
     payload: gameId,
   }
 }

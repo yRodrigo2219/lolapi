@@ -19,12 +19,9 @@ const INITIAL_STATE = {
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case GAME.INIT_REQUEST:
-      const activeGame = action.payload;
-
       return {
         ...state,
         requestDate: Date.now(),
-        activeGame,
         loading: true,
       }
     case GAME.INIT_SUCCESS:
@@ -91,7 +88,13 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         requestDate: Date.now(),
       }
-    case GAME.CHANGE_GAME:
+    case GAME.CHANGE_GAME_SUCCESS:
+      const activeGame = action.payload;
+
+      return {
+        ...state,
+        activeGame,
+      }
     default:
       return state;
   }

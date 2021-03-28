@@ -5,10 +5,11 @@ import {
   initGameRequest,
   initGameSuccess,
   initGameFailure,
+  changeGame,
+  changeGameSuccess,
   updateGameSuccess,
   updateGameFailure,
 } from './actions';
-import { selectActiveGame } from './selects';
 import { selectNextGameId } from '../matchDetails/selects';
 import { GAME } from './types';
 import { MATCH } from '../matchDetails/types';
@@ -36,18 +37,18 @@ function* loadUpdate({ payload }) {
 function* initializeGame() {
   const nextGameId = yield select(selectNextGameId);
 
-  yield put(initGameRequest(nextGameId));
+  yield put(changeGame(nextGameId));
 }
 
 function* loadChange({ payload }) {
-  const activeGame = yield select(selectActiveGame);
-
-  if (activeGame !== payload)
+  if (payload)
     yield put(initGameRequest(payload));
+
+  yield put(changeGameSuccess(payload));
 }
 
 export default function* match() {
-  yield takeLatest(GAME.CHANGE_GAME, loadChange)
+  yield takeLatest(GAME.CHANGE_GAME_REQUEST, loadChange)
   yield takeLatest(MATCH.SUCCESS, initializeGame);
   yield takeLatest(GAME.INIT_REQUEST, loadInit);
   yield takeLatest(GAME.UPDATE_REQUEST, loadUpdate);

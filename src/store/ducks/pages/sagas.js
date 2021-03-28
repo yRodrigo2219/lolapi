@@ -4,10 +4,12 @@ import { loadRequest as loadMatches } from '../leagues/actions';
 import { successHome } from './actions';
 import { loadRequest as loadClock } from '../timeTracker/actions';
 import { requestPatch as loadPatch } from '../riotInfo/actions';
+import { changeGame } from '../gameInfo/actions';
 import { PAGES } from './types';
 import { SCHEDULE } from '../schedule/types';
 
 function* reqHome() {
+  yield put(changeGame(''));
   yield put(loadMatches());
 }
 
