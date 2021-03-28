@@ -4,7 +4,7 @@ const INITIAL_STATE = {
   unix: 0,
   now: 0,
   initialUnix: 0,
-  delay: 6,
+  delay: 5.5,
   didDelayChange: false,
   loading: false,
   error: false
@@ -44,13 +44,16 @@ export default function reducer(state = INITIAL_STATE, action) {
         error: true
       }
     case TIME.SET_DELAY:
-      let delay = Number.parseInt(action.payload);
+      let delay = Number.parseFloat(action.payload);
 
       if (delay < 2 || Number.isNaN(delay))
-        delay = 2;
+        delay = 2.0;
 
-      if (delay > 99)
-        delay = 99;
+      if (delay >= 100)
+        delay = 99.9;
+
+      if (delay % Number.parseInt(delay) !== 0)
+        delay = delay.toFixed(1);
 
       return {
         ...state,

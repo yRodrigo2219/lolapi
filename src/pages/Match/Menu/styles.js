@@ -54,7 +54,7 @@ export const Config = styled.div`
       border-radius: 4px;
       margin-left: 12px;
       padding-left: 8px;
-      width: 70px;
+      width: 86px;
       height: 32px;
       font-size: 24px;
       background-color: #F1F0F2;
