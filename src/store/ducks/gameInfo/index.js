@@ -24,7 +24,7 @@ export default function reducer(state = INITIAL_STATE, action) {
         requestDate: Date.now(),
         loading: true,
       }
-    case GAME.INIT_SUCCESS:
+    case GAME.INIT_SUCCESS: {
       const metadata = action.payload.gameMetadata;
       const frames = action.payload.frames;
       const data = frames[frames.length - 1];
@@ -44,28 +44,28 @@ export default function reducer(state = INITIAL_STATE, action) {
         loading: false,
         error: false
       };
-    case GAME.UPDATE_SUCCESS:
+    }
+    case GAME.UPDATE_SUCCESS: {
       // TODO: Check if its updating the correct game
-      const metaData = action.payload.gameMetadata;
       const dataFrames = action.payload.frames;
 
-      const lastFrame = dataFrames[dataFrames.length - 1];
-      const date = new Date(lastFrame.rfc460Timestamp).getTime();
+      const data = dataFrames[dataFrames.length - 1];
+      const gameDate = new Date(data.rfc460Timestamp).getTime();
 
       return {
         ...state,
-        gameState: lastFrame.gameState,
+        gameState: data.gameState,
         requestPing: Date.now() - state.requestDate,
         time: {
           ...state.time,
-          initial: (state.time.initial === 0 ? date : state.time.initial),
-          now: (state.time.initial === 0 ? 0 : (date - state.time.initial)),
+          initial: (state.time.initial === 0 ? gameDate : state.time.initial),
+          now: (state.time.initial === 0 ? 0 : (gameDate - state.time.initial)),
         },
-        metadata: metaData,
-        data: lastFrame,
+        data,
         loading: false,
         error: false
       };
+    }
     case GAME.INIT_FAILURE:
       return {
         ...state,

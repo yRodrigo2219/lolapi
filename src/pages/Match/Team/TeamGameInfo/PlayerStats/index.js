@@ -20,10 +20,10 @@ import {
   Bag,
 } from './styles';
 
-export default function PlayerStats({ flipped, player, data }) {
+export default function PlayerStats({ flipped, data, metadata }) {
   const isLoading = useSelector(selectIsLoading);
   const patchVersion = useSelector(selectPatchVersion);
-  const participant = useSelector(selectParticipant(player.participantId));
+  const details = useSelector(selectParticipant(metadata.participantId));
 
   const runes = {
     styleId: -1,
@@ -31,44 +31,53 @@ export default function PlayerStats({ flipped, player, data }) {
     keystoneId: -1,
   };
 
-  if (participant !== undefined) {
-    runes.styleId = participant.perkMetadata.styleId;
-    runes.subStyleId = participant.perkMetadata.subStyleId;
-    runes.keystoneId = participant.perkMetadata.perks[0];
+  if (details !== undefined) {
+    runes.styleId = details.perkMetadata.styleId;
+    runes.subStyleId = details.perkMetadata.subStyleId;
+    runes.keystoneId = details.perkMetadata.perks[0];
   }
 
   const keystonePath = useSelector(selectKeystonePath(runes.styleId, runes.keystoneId));
   const substylePath = useSelector(selectSubstylePath(runes.subStyleId));
 
-  if (isLoading || participant === undefined)
+  if (isLoading || details === undefined)
     return null;
 
   const keystoneImg = getRuneImage(32, keystonePath);
   const runeSecImg = getRuneImage(24, substylePath);
-  const champImg = getChampionImage(72, patchVersion, player.championId);
+  const champImg = getChampionImage(72, patchVersion, metadata.championId);
   const items = [];
   let trinket = null;
 
+  // Organizing Inventory
   for (let i = 0, j = 7; i < j; i++) {
-    const t = participant.items[i];
+    const t = details.items[i];
 
     if (t !== undefined) {
-      if (t === 3340 || t === 3363 || t === 3364) {
+      if (t === 3340 || t === 3363 || t === 3364) { // is a trinket?
         trinket = t;
         j++;
-      } else if (!items.find(item => (item.id === t))
-        && (t !== 2138 && t !== 2139 && t !== 2140)) {
-        items.push({
-          id: t,
-          img: getItemImage(40, patchVersion, t),
-        });
       } else {
-        j++;
+        const item = items.find(item => (item.id === t));
+
+        if (item) { // is already in the inventory?
+          item.qnt++;
+          j++;
+        } else if (t !== 2138 && t !== 2139 && t !== 2140) { // is not an elixir?
+          items.push({
+            id: t,
+            img: getItemImage(40, patchVersion, t),
+            qnt: 1,
+          });
+        } else {
+          j++;
+        }
       }
-    } else if (i + 1 === j && trinket) {
+    } else if (i + 1 === j && trinket) { // when loop reaches last slot + has a trinket
       items.push({
         id: trinket,
-        img: getItemImage(40, patchVersion, trinket)
+        img: getItemImage(40, patchVersion, trinket),
+        qnt: 1,
       });
     } else {
       items.push(null);
@@ -76,14 +85,14 @@ export default function PlayerStats({ flipped, player, data }) {
   }
 
   const level = data.level;
-  const name = player.summonerName;
+  const name = metadata.summonerName;
   const currentHealth = Number.parseInt((data.currentHealth / data.maxHealth) * 100);
   const kills = data.kills;
   const deaths = data.deaths;
   const assists = data.assists;
   const cs = data.creepScore;
-  const wardP = participant.wardsPlaced;
-  const wardD = participant.wardsDestroyed;
+  const wardP = details.wardsPlaced;
+  const wardD = details.wardsDestroyed;
   const gold = data.totalGold;
 
   return (
@@ -121,9 +130,18 @@ export default function PlayerStats({ flipped, player, data }) {
           <div>
             {
               items.map((item, index) => (
-                item === null ?
-                  <img src='../imgs/emptyItem.png' alt='' key={index} /> :
-                  <img src={item.img} alt='' key={index} />
+                <label key={index}>
+                  {
+                    item === null ?
+                      <img src='../imgs/emptyItem.png' alt='' /> :
+                      <img src={item.img} alt='' />
+                  }
+                  {
+                    item?.qnt > 1 ?
+                      <span>x{item.qnt}</span> :
+                      null
+                  }
+                </label>
               ))
             }
           </div>

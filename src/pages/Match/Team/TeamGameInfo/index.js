@@ -19,28 +19,25 @@ export default function TeamGameInfo({ flipped, id }) {
   const teamSide = useSelector(selectTeamSide(id));
   const teamData = useSelector(selectTeamData(teamSide));
 
-  if (teamSide === '')
-    return null;
-
   return (
     <Container>
       <StatsList flipped={flipped}>
-        <Stat content={teamData.totalGold} side={teamSide}
+        <Stat content={teamData?.totalGold ?? 0} side={teamSide}
           stat={STAT.COIN} flipped={flipped} />
 
-        <Stat content={teamData.totalKills} side={teamSide}
+        <Stat content={teamData?.totalKills ?? 0} side={teamSide}
           stat={STAT.SWORD} flipped={flipped} />
 
-        <Stat content={teamData.towers} side={teamSide}
+        <Stat content={teamData?.towers ?? 0} side={teamSide}
           stat={STAT.TOWER} flipped={flipped} />
 
-        <Stat content={teamData.barons} side={teamSide}
+        <Stat content={teamData?.barons ?? 0} side={teamSide}
           stat={STAT.BARON} flipped={flipped} />
 
-        <Stat content={teamData.inhibitors} side={teamSide}
+        <Stat content={teamData?.inhibitors ?? 0} side={teamSide}
           stat={STAT.INHIB} flipped={flipped} />
 
-        <Stat content={teamData.dragons} side={teamSide}
+        <Stat content={teamData?.dragons ?? []} side={teamSide}
           stat={STAT.DRAKE} flipped={flipped} />
 
       </StatsList>
@@ -53,7 +50,7 @@ export default function TeamGameInfo({ flipped, id }) {
             ));
 
             return (
-              <PlayerStats key={id} flipped={flipped} player={player} data={data} />
+              <PlayerStats key={id} flipped={flipped} data={data} metadata={player} />
             )
           })
         }

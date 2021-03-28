@@ -219,7 +219,8 @@ export const Bag = styled.span`
     }
   }
 
-  div > img {
+  div > label {
+    position: relative;
     box-sizing: border-box;
     width: 44px;
     height: 44px;
@@ -227,5 +228,15 @@ export const Bag = styled.span`
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
     background-color: ${Colors.primary};
+    font-family: 'Fira Sans Extra Condensed', sans-serif;
+    font-weight: 600;
+
+    span {
+      position: absolute;
+      color: ${Colors.secondary};
+      font-size: 16px;
+      bottom: -2px;
+      right: 2px;
+    }
   }
 `;
