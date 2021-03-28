@@ -138,6 +138,7 @@ export const Health = styled.span`
     border-radius: 2px;
     background-color: #E60B40;
     width: ${({ hp }) => `${hp}%`};
+    transition: width 500ms ease;
   }
 
   >span {

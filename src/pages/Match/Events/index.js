@@ -18,8 +18,8 @@ export default function Events() {
       toast(
         <Container>
           {
-            events.map(event => (
-              <Event data={event} />
+            events.map((event, index) => (
+              <Event data={event} key={index} />
             ))
           }
         </Container>
@@ -29,7 +29,7 @@ export default function Events() {
   return (
     <Toast
       position="top-center"
-      autoClose={75000}
+      autoClose={7500}
       closeOnClick={false}
       pauseOnFocusLoss={false}
     />

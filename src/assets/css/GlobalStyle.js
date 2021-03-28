@@ -12,6 +12,11 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${Colors.primary};
   }
 
+  ::selection {
+    color: ${Colors.secondary};
+    background-color: ${Colors.primarySelect};
+  }
+
   #root {
     min-height: 100vh;
   }
