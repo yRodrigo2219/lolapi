@@ -62,6 +62,9 @@ export async function getGameStats(gameId, isoDate) {
 export async function getInitialGameStats(gameId) {
   const res = await axios.get(`${API_URL_LIVE}/window/${gameId}`);
 
+  if (res.status === 204)
+    throw new Error('Nothing to initialize');
+
   return res.data;
 }
 

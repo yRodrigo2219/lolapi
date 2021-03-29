@@ -2,6 +2,7 @@ import { GAME } from './types';
 
 const INITIAL_STATE = {
   activeGame: '',
+  gameToUpdate: '',
   latency: 0,
   gameState: '',
   requestDate: 0,
@@ -33,6 +34,7 @@ export default function reducer(state = INITIAL_STATE, action) {
 
       return {
         ...state,
+        gameToUpdate: action.payload.esportsGameId,
         gameState: data.gameState,
         requestPing: Date.now() - state.requestDate,
         time: {
@@ -56,6 +58,7 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         gameState: data.gameState,
+        gameToUpdate: data.gameState === 'finished' ? '' : state.gameToUpdate,
         requestPing: Date.now() - state.requestDate,
         time: {
           ...state.time,
@@ -89,6 +92,11 @@ export default function reducer(state = INITIAL_STATE, action) {
       return {
         ...state,
         requestDate: Date.now(),
+      }
+    case GAME.CHANGE_GAME_REQUEST:
+      return {
+        ...state,
+        gameToUpdate: action.payload === '' ? '' : state.gameToUpdate,
       }
     case GAME.CHANGE_GAME_SUCCESS:
       const activeGame = action.payload;

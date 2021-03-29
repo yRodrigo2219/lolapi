@@ -14,9 +14,10 @@ export function initGameSuccess(data) {
   }
 }
 
-export function initGameFailure() {
+export function initGameFailure(gameId) {
   return {
     type: GAME.INIT_FAILURE,
+    payload: gameId,
   }
 }
 
@@ -38,9 +39,13 @@ export function updateGameSuccess(data) {
   }
 }
 
-export function updateGameFailure() {
+export function updateGameFailure(gameId, isoDate) {
   return {
     type: GAME.UPDATE_FAILURE,
+    payload: {
+      gameId,
+      isoDate
+    }
   }
 }
 

@@ -1,4 +1,4 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { call, put, takeLatest, select, take } from 'redux-saga/effects';
 
 import { getTime } from '../../../services/clock';
 import { loadFailure, loadSuccess, updateTime, loadRequest } from './actions';
@@ -28,6 +28,12 @@ function* onError() {
   yield put(loadRequest());
 }
 
+function* onClockLoad() {
+  yield take(GAME.INIT_SUCCESS);
+
+  yield put(updateTime());
+}
+
 function* update() {
   const unix = yield select(selectNow);
   const updateGame = yield select(selectGameToUpdate);
@@ -55,8 +61,8 @@ function* onDelayUpdate() {
 
 export default function* timeTracker() {
   yield takeLatest(TIME.REQUEST, load);
-  yield takeLatest(GAME.INIT_SUCCESS, update);
-  yield takeLatest(TIME.UPDATE, update);
+  yield takeLatest(TIME.SUCCESS, onClockLoad);
   yield takeLatest(TIME.FAILURE, onError);
+  yield takeLatest(TIME.UPDATE, update);
   yield takeLatest(TIME.SET_DELAY, onDelayUpdate);
 }

@@ -3,8 +3,7 @@ export const selectActiveGame = state => (
 )
 
 export const selectGameToUpdate = state => (
-  state.gameInfo.gameState === 'finished' ?
-    '' : state.gameInfo.activeGame
+  state.gameInfo.gameToUpdate
 )
 
 export const selectIsGameLoading = state => (
