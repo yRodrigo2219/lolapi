@@ -47,9 +47,10 @@ export default function reducer(state = INITIAL_STATE, action) {
     }
     case GAME.UPDATE_SUCCESS: {
       // TODO: Check if its updating the correct game
+      const metadata = action.payload.gameMetadata;
       const dataFrames = action.payload.frames;
-
       const data = dataFrames[dataFrames.length - 1];
+
       const gameDate = new Date(data.rfc460Timestamp).getTime();
 
       return {
@@ -61,6 +62,7 @@ export default function reducer(state = INITIAL_STATE, action) {
           initial: (state.time.initial === 0 ? gameDate : state.time.initial),
           now: (state.time.initial === 0 ? 0 : (gameDate - state.time.initial)),
         },
+        metadata,
         data,
         loading: false,
         error: false
