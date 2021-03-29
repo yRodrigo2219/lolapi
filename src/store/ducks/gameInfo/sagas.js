@@ -32,7 +32,7 @@ function* loadUpdate({ payload }) {
 
     yield put(updateGameSuccess(response));
   } catch (err) {
-    yield put(updateGameFailure(payload.gameId, payload.isoDate));
+    yield put(updateGameFailure());
   }
 }
 
@@ -50,15 +50,17 @@ function* loadChange({ payload }) {
 }
 
 function* onInitError({ payload }) {
-  yield call(promiseDelay, 15000); // wait for cache exp. 15s
+  if (payload) {
+    yield call(promiseDelay, 15000); // wait for cache exp. 15s
 
-  yield put(initGameRequest(payload)); // try again
+    yield put(initGameRequest(payload)); // try again
+  }
 }
 
 export default function* match() {
   yield takeLatest(GAME.CHANGE_GAME_REQUEST, loadChange)
   yield takeLatest(MATCH.SUCCESS, initializeGame);
-  yield takeLatest(GAME.INIT_REQUEST, loadInit);
   yield takeLatest(GAME.INIT_FAILURE, onInitError);
+  yield takeLatest(GAME.INIT_REQUEST, loadInit);
   yield takeLatest(GAME.UPDATE_REQUEST, loadUpdate);
 }

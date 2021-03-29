@@ -14,7 +14,8 @@ export const Container = styled.div`
     order: ${props => (
     props.flipped ? '1' : '0'
   )};
-    max-height: 180px;
+    height: 180px;
+    width: 180px;
     margin: 12px 0px;
   }
 `

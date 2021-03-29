@@ -39,13 +39,9 @@ export function updateGameSuccess(data) {
   }
 }
 
-export function updateGameFailure(gameId, isoDate) {
+export function updateGameFailure() {
   return {
     type: GAME.UPDATE_FAILURE,
-    payload: {
-      gameId,
-      isoDate
-    }
   }
 }
 

@@ -12,7 +12,7 @@ const INITIAL_STATE = {
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case TIME.UPDATE:
+    case TIME.UPDATE: {
       const now =
         state.unix + (Date.now() - state.initialUnix) - (state.delay * 10000);
 
@@ -20,23 +20,27 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         now,
       }
+    }
     case TIME.REQUEST:
       return {
         ...state,
         loading: true
       }
-    case TIME.SUCCESS:
+    case TIME.SUCCESS: {
       const initialUnix = Date.now();
       const ms = new Date(action.payload.datetime).getMilliseconds();
       const unix = action.payload.unixtime * 1000 + ms;
+      const now = unix - (state.delay * 10000);
 
       return {
         ...state,
         unix,
+        now,
         initialUnix,
         loading: false,
         error: false
       };
+    }
     case TIME.FAILURE:
       return {
         ...state,
