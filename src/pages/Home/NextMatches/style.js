@@ -9,6 +9,11 @@ export const Container = styled.div`
   flex-shrink: 1.85;
   background-color: ${Colors.secondary};
   border-radius: 10px;
+
+  @media only screen and (max-width: 859px) {
+    max-width: 100%;
+    height: 100vh;
+  }
 `;
 
 export const Title = styled.h1`
@@ -20,6 +25,10 @@ export const Title = styled.h1`
   padding: 25px 0px;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
   border-radius: 10px;
+
+  @media only screen and (max-width: 859px) {
+    box-shadow: none;
+  }
 `;
 
 export const Footer = styled.div`
@@ -28,6 +37,8 @@ export const Footer = styled.div`
 
 export const MatchList = styled.div`
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
   height: calc(100% - 92px);
   padding: 30px 44px 40px;
   overflow: auto;
@@ -48,5 +59,13 @@ export const MatchList = styled.div`
 
   ::-webkit-scrollbar-thumb:hover {
     background: ${Colors.primarySelect}; 
+  }
+
+  @media only screen and (min-width: 860px) and (max-width: 1150px){
+    padding: 30px 24px 40px;
+  }
+
+  @media only screen and (max-width: 859px) {
+    align-items: center;
   }
 `;
