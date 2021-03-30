@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Colors } from '../../../../assets/css/StylePattern';
 
 export const Container = styled(Link)`
+  box-sizing: border-box;
   display: flex;
   background-color: ${Colors.primaryDark};
   max-width: 600px;

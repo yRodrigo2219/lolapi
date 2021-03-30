@@ -10,6 +10,11 @@ export const Container = styled.div`
   width: 100%;
   padding-right: 73px;
   padding-top: 28px;
+
+  @media only screen and (min-width: 860px) and (max-width: 1150px){
+    padding-right: 8px;
+    padding-left: 8px;
+  }
 `;
 
 export const MatchList = styled.div`
@@ -18,6 +23,10 @@ export const MatchList = styled.div`
 
   a {
     margin: 16px 0px;
+  }
+
+  @media only screen and (min-width: 860px) and (max-width: 1150px){
+    justify-content: center;
   }
 `;
 

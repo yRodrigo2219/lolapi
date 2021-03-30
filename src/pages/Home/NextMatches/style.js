@@ -4,10 +4,9 @@ import { Colors } from '../../../assets/css/StylePattern';
 
 export const Container = styled.div`
   height: calc(100vh - 52px);
-  min-width: 408px;
   max-width: 670px;
   width: 100%;
-  flex-shrink: 2;
+  flex-shrink: 1.85;
   background-color: ${Colors.secondary};
   border-radius: 10px;
 `;

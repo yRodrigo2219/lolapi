@@ -22,6 +22,10 @@ export const Container = styled(Link)`
   :active {
     transform: translateY(4px);
   }
+
+  @media only screen and (min-width: 860px) and (max-width: 1150px){
+    min-width: 250px;
+  }
 `;
 
 export const Center = styled.div`
@@ -35,6 +39,10 @@ export const LeagueImage = styled.img`
   align-self: center;
   margin-left: 4px;
   max-height: 56px;
+  
+  @media only screen and (min-width: 860px) and (max-width: 1150px){
+    display: none;
+  }
 `;
 
 export const ScoreBoard = styled.span`
