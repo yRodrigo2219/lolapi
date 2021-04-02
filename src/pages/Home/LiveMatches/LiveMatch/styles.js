@@ -26,7 +26,7 @@ export const Container = styled(Link)`
 export const LeagueImg = styled.img`
   align-self: center;
   margin-left: 8px;
-  max-height: 80px;
+  height: 80px;
 `;
 
 export const Center = styled.div`
@@ -55,6 +55,6 @@ export const TeamInfo = styled.span`
   align-items: center;
 
   img {
-    max-height: 88px;
+    height: 88px;
   }
 `;

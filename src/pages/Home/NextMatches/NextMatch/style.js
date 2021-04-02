@@ -39,7 +39,7 @@ export const Center = styled.div`
 export const LeagueImage = styled.img`
   align-self: center;
   margin-left: 4px;
-  max-height: 56px;
+  height: 56px;
   
   @media only screen and (min-width: 860px) and (max-width: 1150px){
     display: none;
@@ -63,7 +63,7 @@ export const TeamInfo = styled.span`
   align-items: center;
 
   img {
-    max-height: 64px;
+    height: 64px;
   }
 `;
 

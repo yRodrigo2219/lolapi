@@ -3,7 +3,6 @@ import { GAME } from './types';
 const INITIAL_STATE = {
   activeGame: '',
   gameToUpdate: '',
-  latency: 0,
   gameState: '',
   requestDate: 0,
   requestPing: 0,
@@ -82,12 +81,16 @@ export default function reducer(state = INITIAL_STATE, action) {
         },
         error: true
       }
-    case GAME.UPDATE_FAILURE:
+    case GAME.UPDATE_FAILURE: {
+      const didGameStart = state.gameState !== 'unstarted';
+
       return {
         ...state,
-        gameState: state.gameState === 'unstarted' ? state.gameState : 'error',
+        gameState: didGameStart ? 'error' : state.gameState,
+        requestPing: didGameStart ? 9999 : 0,
         error: true
       }
+    }
     case GAME.UPDATE_REQUEST:
       return {
         ...state,

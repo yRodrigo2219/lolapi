@@ -43,6 +43,7 @@ function* initializeGame() {
 }
 
 function* loadChange({ payload }) {
+  yield put(initGameFailure(''));
   if (payload)
     yield put(initGameRequest(payload));
 
