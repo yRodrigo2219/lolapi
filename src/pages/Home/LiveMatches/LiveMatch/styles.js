@@ -8,7 +8,6 @@ export const Container = styled(Link)`
   display: flex;
   background-color: ${Colors.primaryDark};
   max-width: 600px;
-  min-width: 480px;
   height: 96px;
   border-radius: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -27,6 +26,10 @@ export const LeagueImg = styled.img`
   align-self: center;
   margin-left: 8px;
   height: 80px;
+
+  @media only screen and (max-width: 529px){
+    display: none;
+  }
 `;
 
 export const Center = styled.div`
@@ -56,5 +59,11 @@ export const TeamInfo = styled.span`
 
   img {
     height: 88px;
+  }
+
+  @media only screen and (max-width: 429px){
+    span {
+      display: none;
+    }
   }
 `;

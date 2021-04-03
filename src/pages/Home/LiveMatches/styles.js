@@ -19,6 +19,14 @@ export const Container = styled.div`
     padding: 28px 16px 0px;
     min-height: 50vh;
   }
+
+  @media only screen and (max-width: 529px){
+    min-width: 380px;
+  }
+
+  @media only screen and (max-width: 429px){
+    min-width: 260px;
+  }
 `;
 
 export const MatchList = styled.div`

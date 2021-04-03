@@ -27,6 +27,10 @@ export const Container = styled(Link)`
   @media only screen and (min-width: 860px) and (max-width: 1150px){
     min-width: 250px;
   }
+
+  @media only screen and (max-width: 420px){
+    min-width: 250px;
+  }
 `;
 
 export const Center = styled.div`
@@ -42,6 +46,10 @@ export const LeagueImage = styled.img`
   height: 56px;
   
   @media only screen and (min-width: 860px) and (max-width: 1150px){
+    display: none;
+  }
+
+  @media only screen and (max-width: 420px){
     display: none;
   }
 `;

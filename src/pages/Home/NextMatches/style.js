@@ -8,11 +8,14 @@ export const Container = styled.div`
   width: 100%;
   flex-shrink: 1.85;
   background-color: ${Colors.secondary};
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 
   @media only screen and (max-width: 859px) {
     max-width: 100%;
     height: 100vh;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 10px;
   }
 `;
 
@@ -24,7 +27,9 @@ export const Title = styled.h1`
   margin: 0px;
   padding: 25px 0px;
   box-shadow: 0px 2px 4px rgba(0,0,0,0.25);
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 
   @media only screen and (max-width: 859px) {
     box-shadow: none;
