@@ -18,6 +18,13 @@ export const Container = styled.div`
     width: 180px;
     margin: 12px 0px;
   }
+
+  @media only screen and (min-width: 960px) and (max-width: 1620px){
+    img {
+      height: 100px;
+      width: 100px;
+    }
+  }
 `
 
 export const InfoContainer = styled.div`
@@ -42,5 +49,16 @@ export const InfoContainer = styled.div`
     line-height: 24px;
     font-size: 24px;
     margin: 0px;
+  }
+
+  @media only screen and (min-width: 960px) and (max-width: 1620px){
+    h1 {
+      line-height: 32px;
+      font-size: 32px;
+    }
+
+    h2 {
+      font-size: 16px;
+    }
   }
 `;

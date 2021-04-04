@@ -114,6 +114,10 @@ export default function PlayerStats({ flipped, data, metadata }) {
       </div>
       <div>
         <CreepScore>
+          <div id='extragold'>
+            <span>{gold}</span>
+            <StatSVG stat={STAT_TYPE.COIN} />
+          </div>
           <div>
             <span>{cs}</span>
             <StatSVG />

@@ -6,7 +6,7 @@ export const Container = styled.div`
   box-sizing: border-box;
   display: flex;
   height: 80px;
-  min-width: 680px;
+  width: 680px;
   padding: 4px 12px;
   background-color: ${Colors.secondary};
   border-radius: 10px;
@@ -27,6 +27,13 @@ export const Container = styled.div`
       'row-reverse' :
       'row'
   )};
+  }
+
+  @media only screen and (min-width: 960px) and (max-width: 1620px){
+    width: 344px;
+    height: 140px;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 `;
 
@@ -165,6 +172,14 @@ export const CreepScore = styled.span`
   align-items: center;
   flex-direction: column;
 
+  #extragold {
+    display: none;
+
+    span {
+      color: #E68E0B;
+    }
+  }
+
   div {
     display: flex;
     align-items: center;
@@ -175,6 +190,11 @@ export const CreepScore = styled.span`
       font-size: 24px;
       line-height: 24px;
     }
+
+    svg {
+      width: 20px;
+      fill: #E68E0B;
+    }
   }
 
   >span {
@@ -182,6 +202,12 @@ export const CreepScore = styled.span`
     font-size: 16px;
     color: ${Colors.primaryDark};
     opacity: 0.75;
+  }
+
+  @media only screen and (min-width: 960px) and (max-width: 1620px){
+    #extragold {
+      display: flex;
+    }
   }
 `;
 
@@ -217,6 +243,10 @@ export const Bag = styled.span`
       width: 20px;
       fill: #E68E0B;
     }
+
+    @media only screen and (min-width: 960px) and (max-width: 1620px){
+      display: none;
+    }
   }
 
   div > label {
@@ -239,4 +269,6 @@ export const Bag = styled.span`
       right: 2px;
     }
   }
+
+  
 `;
