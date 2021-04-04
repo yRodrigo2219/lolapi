@@ -42,5 +42,6 @@ export const Toast = styled(ToastContainer)`
 
   @media only screen and (max-width: 600px) {
     min-width: 0;
+    left: 25%;
   }
 `;
