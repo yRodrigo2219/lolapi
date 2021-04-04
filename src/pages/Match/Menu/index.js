@@ -59,50 +59,52 @@ export default function Menu() {
     return null;
 
   return (
-    <Container>
-      <Options>
-        <span>Options</span>
-        <Config>
-          <span>Games:</span>
-          <div>
-            {
-              games.map(game => {
-                let isGameActive = game.id === activeGame;
-
-                return (
-                  <GameButton active={isGameActive}
-                    key={game.id} onClick={changeGameOnClick(dispatch, game.id)}
-                  >
-                    {game.number}
-                  </GameButton>
-                )
-              })
-            }
-          </div>
-        </Config>
-        <Config>
-          <span>Delay:</span>
-          <label>
-            <span>calls</span>
-            <input type='number' value={delay} onChange={setDelayOnChange(dispatch)} />
-          </label>
-        </Config>
-
-        <GameStatus>
-          <div>
-            <span>{gameState}</span>
-            <Latency ping={ping}>
-              <LatencyPathSVG />
-            </Latency>
-          </div>
-          <div>
+    <div id='menu'>
+      <Container>
+        <Options>
+          <span>Options</span>
+          <Config>
+            <span>Games:</span>
             <div>
-              <ClockSVG />
-              <span>{gameTime}</span>
+              {
+                games.map(game => {
+                  let isGameActive = game.id === activeGame;
+
+                  return (
+                    <GameButton active={isGameActive}
+                      key={game.id} onClick={changeGameOnClick(dispatch, game.id)}
+                    >
+                      {game.number}
+                    </GameButton>
+                  )
+                })
+              }
             </div>
-          </div>
-        </GameStatus>
-      </Options>
-    </Container>
+          </Config>
+          <Config>
+            <span>Delay:</span>
+            <label>
+              <span>calls</span>
+              <input type='number' value={delay} onChange={setDelayOnChange(dispatch)} />
+            </label>
+          </Config>
+
+          <GameStatus>
+            <div>
+              <span>{gameState}</span>
+              <Latency ping={ping}>
+                <LatencyPathSVG />
+              </Latency>
+            </div>
+            <div>
+              <div>
+                <ClockSVG />
+                <span>{gameTime}</span>
+              </div>
+            </div>
+          </GameStatus>
+        </Options>
+      </Container>
+    </div>
   )
 }

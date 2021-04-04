@@ -15,4 +15,10 @@ export const PlayerList = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media only screen and (max-width: 690px){
+    align-items: ${({ flipped }) => (
+    flipped ? 'flex-end' : 'flex-start'
+  )};
+  }
 `;

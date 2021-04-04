@@ -41,7 +41,7 @@ export default function TeamGameInfo({ flipped, id }) {
           stat={STAT.DRAKE} flipped={flipped} />
 
       </StatsList>
-      <PlayerList>
+      <PlayerList flipped={flipped}>
         {
           teamPart.map(player => {
             const id = player.participantId;
