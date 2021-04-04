@@ -11,7 +11,7 @@ import Match from './pages/Match';
 
 export default function Routes() {
   return (
-    <BrowserRouter basename={`/${process.env.PUBLIC_URL}`}>
+    <BrowserRouter basename={`${process.env.PUBLIC_URL}`}>
       <Header />
 
       <Switch>
