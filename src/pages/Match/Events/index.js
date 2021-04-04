@@ -29,7 +29,7 @@ export default function Events() {
   return (
     <Toast
       position="top-center"
-      autoClose={7500}
+      autoClose={750000}
       closeOnClick={false}
       pauseOnFocusLoss={false}
     />

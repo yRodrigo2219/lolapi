@@ -39,4 +39,8 @@ export const Toast = styled(ToastContainer)`
   .Toastify__progress-bar {
     background: ${Colors.primary};
   }
+
+  @media only screen and (max-width: 600px) {
+    min-width: 0;
+  }
 `;

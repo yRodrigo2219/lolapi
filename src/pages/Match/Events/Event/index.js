@@ -89,6 +89,7 @@ function RenderStructureEvent({ data }) {
         </TeamContainer>
         <ActedContainer side={againstSide}>
           <span>{message}</span>
+          <EventSVG stat={ACTION_TYPE.KILLED} />
           <img src={imgSrc} alt='' />
         </ActedContainer>
       </div>
@@ -131,6 +132,7 @@ function RenderDragonEvent({ data }) {
         </TeamContainer>
         <ActedContainer side={againstSide}>
           <span>{message}</span>
+          <EventSVG stat={ACTION_TYPE.KILLED} />
           <img src={imgSrc} alt='' />
         </ActedContainer>
       </div>
@@ -166,6 +168,7 @@ function RenderMonsterEvent({ data }) {
         </TeamContainer>
         <ActedContainer side={againstSide}>
           <span>{message}</span>
+          <EventSVG stat={ACTION_TYPE.KILLED} />
           <img src={imgSrc} alt='' />
         </ActedContainer>
       </div>

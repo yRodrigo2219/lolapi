@@ -38,6 +38,12 @@ export const ActorContainer = styled.span`
   )};
     border-radius: 50%;
   }
+
+  @media only screen and (max-width: 600px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const TeamContainer = styled.span`
@@ -60,11 +66,21 @@ export const TeamContainer = styled.span`
   span {
     color: ${Colors.primary};
   }
+
+  @media only screen and (max-width: 600px) {
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const ActedContainer = styled.span`
   display: flex;
   align-items: center;
+
+  svg {
+    display: none;
+  }
 
   img {
     height: 64px;
@@ -81,5 +97,15 @@ export const ActedContainer = styled.span`
 
   span {
     font-size: 20px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    span {
+      display: none;
+    }
+
+    svg {
+      display: inline-block;
+    }
   }
 `;
