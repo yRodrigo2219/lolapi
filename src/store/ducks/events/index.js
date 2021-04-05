@@ -183,6 +183,9 @@ export default function reducer(state = INITIAL_STATE, action) {
 
       if (state.pastFrame !== null) {
         let pastFrame = state.pastFrame;
+        // fix a resume -> pause -> resume, bug
+        const wasGamePaused = pastFrame.gameState === 'paused' ? true : false;
+        const isGamePaused = lastFrame.gameState === 'paused' ? true : false;
         const blueTeamId = metadata.blueTeamMetadata.esportsTeamId;
         const redTeamId = metadata.redTeamMetadata.esportsTeamId;
         dataFrames.forEach(frame => {
@@ -196,7 +199,8 @@ export default function reducer(state = INITIAL_STATE, action) {
           getSlayedDragons(events, frame.redTeam.dragons, pastFrame.redTeam.dragons, 'red', redTeamId);
           getDestroyedStructures(events, frame.redTeam, pastFrame.redTeam, 'red', redTeamId);
 
-          getGameState(events, frame.gameState, pastFrame.gameState);
+          if (!wasGamePaused && !isGamePaused)
+            getGameState(events, frame.gameState, pastFrame.gameState);
 
           pastFrame = frame;
         });
