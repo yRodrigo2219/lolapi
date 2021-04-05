@@ -28,9 +28,11 @@ export default function Match() {
     <>
       <Events />
       <Container>
-        <Team />
-        <Menu />
-        <Team flipped />
+        <div>
+          <Team />
+          <Menu />
+          <Team flipped />
+        </div>
       </Container>
     </>
 

@@ -14,11 +14,7 @@ export const StatsList = styled.div`
 export const PlayerList = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  @media only screen and (max-width: 690px){
-    align-items: ${({ flipped }) => (
+  align-items: ${({ flipped }) => (
     flipped ? 'flex-end' : 'flex-start'
   )};
-  }
 `;
