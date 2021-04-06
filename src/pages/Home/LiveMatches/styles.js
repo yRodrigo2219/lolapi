@@ -53,4 +53,13 @@ export const NoMatches = styled.span`
   font-size: 32px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
+
+  @media only screen and (max-width: 529px){
+    min-width: 380px;
+  }
+
+  @media only screen and (max-width: 429px){
+    min-width: 260px;
+    font-size: 28px;
+  }
 `;
