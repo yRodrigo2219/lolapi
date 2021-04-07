@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/lolapi/static/js/main.3b57fc2f.chunk.js",
-    "main.js.map": "/lolapi/static/js/main.3b57fc2f.chunk.js.map",
+    "main.js": "/lolapi/static/js/main.c68d7663.chunk.js",
+    "main.js.map": "/lolapi/static/js/main.c68d7663.chunk.js.map",
     "runtime-main.js": "/lolapi/static/js/runtime-main.a56f3b99.js",
     "runtime-main.js.map": "/lolapi/static/js/runtime-main.a56f3b99.js.map",
     "static/css/2.82a37e40.chunk.css": "/lolapi/static/css/2.82a37e40.chunk.css",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.a56f3b99.js",
     "static/css/2.82a37e40.chunk.css",
     "static/js/2.cf20c4a4.chunk.js",
-    "static/js/main.3b57fc2f.chunk.js"
+    "static/js/main.c68d7663.chunk.js"
   ]
 }
