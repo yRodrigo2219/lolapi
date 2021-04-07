@@ -8,6 +8,7 @@ import {
 import Header from './components/Header';
 import Home from './pages/Home';
 import Match from './pages/Match';
+import About from './pages/About';
 
 export default function Routes() {
   return (
@@ -15,6 +16,9 @@ export default function Routes() {
       <Header />
 
       <Switch>
+        <Route path='/about'>
+          <About />
+        </Route>
         <Route path='/match/:id'>
           <Match />
         </Route>
