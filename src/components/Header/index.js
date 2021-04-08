@@ -10,7 +10,6 @@ export default function Header() {
       <Logo />
 
       <div>
-        <NavButton to='/faq'>FAQ</NavButton>
         <NavButton to='/about'>About</NavButton>
       </div>
     </Container>
